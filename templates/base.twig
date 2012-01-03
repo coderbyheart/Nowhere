@@ -1,0 +1,68 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Nowhere</title>
+    <meta name="description" content="Project Nowhere by Anna Meyer.">
+    <meta name="author"
+          content="Anna Meyer | http://www.sayhellotoanna.com/ &amp; Markus Tacker | http://coderbyheart.de/">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/helpers.css">
+    <link rel="stylesheet" href="/css/media.css">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<nav id="topnav">
+    <ul>
+        <li class="col1"><a href="/en/about">About</a></li>
+        <li class="col2 textcenter"><a href="/de">DE</a></li>
+        <li class="col3 textcenter"><a href="/en/stones" class="icon grid"></a></li>
+        <li class="col3 textcenter"><a href="/en/stones/list" class="icon list"></a></li>
+        <li class="col2 textcenter"><a href="/en">EN</a></li>
+        <li class="col1 textright"><a href="/en/participate">Participate</a></li>
+    </ul>
+</nav>
+<nav id="footernav">
+    <ul>
+        <li class="col1"><a href="/en/news">News</a></li>
+        <li class="col2 textright"><a href="/en/contact">Contact</a></li>
+    </ul>
+</nav>
+<header>
+    <h1>Nowhere</h1>
+</header>
+<aside id="left">
+    <h2><a href="/">Stones</a></h2>
+</aside>
+<aside id="right">
+    <h2><a href="/en/places">Places</a></h2>
+</aside>
+<aside id="bottom">
+    <h2><a href="/en/coordinates">Coordinates</a></h2>
+</aside>
+<div id="main">
+    {% block content %}
+    {% endblock content %}
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+<!-- scripts concatenated and minified via ant build script-->
+<script src="/js/plugins.js"></script>
+<script src="/js/script.js"></script>
+<!-- end scripts-->
+<!--[if lt IE 7 ]>
+<script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+<script>window.attachEvent("onload", function () {
+    CFInstall.check({mode:"overlay"})
+})</script>
+<![endif]-->
+</body>
+</html>

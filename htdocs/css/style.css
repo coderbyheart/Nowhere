@@ -1,0 +1,51 @@
+html { background-color: #e7ebeb; color: #000; font-family: Arial, sans-serif; font-weight: bold; }
+.colorblue { color: #445c98; }
+a { text-decoration: none; }
+.textright { text-align: right; }
+.textleft { text-align: right; }
+.textcenter { text-align: center; }
+.icon { display: inline-block; width: 32px; height: 32px; }
+.icon.grid { background-image: url(../img/grid-w.png); }
+.icon.grid:hover { background-image: url(../img/grid-b.png); }
+.icon.list { background-image: url(../img/list-w.png); }
+.icon.list:hover { background-image: url(../img/list-b.png); }
+nav { color: #fff; font-size: 0.9375em; } /* 15px */
+nav a { color: inherit; }
+nav a:hover { color: #000; }
+nav ul { margin: 0; padding: 0; clear: both; }
+nav li { float: left; }
+nav a { margin: 2em; display: inline-block; }
+#topnav li { line-height: 32px; }
+#topnav li.col1 { width: 10%; }
+#topnav li.col2 { width: 35%; }
+#topnav li.col3 { width: 5%; }
+#footernav li.col1, #footernav li.col2 { width: 50%; }
+h1, h2 { font-size: 1.86666666667em; margin: 0; } /* 28px */
+h2 a { color: #000; }
+h2 a:hover { color: #fff; }
+#topnav, #footernav, header, #left, #right, #bottom { position: absolute; z-index: 100; }
+#topnav { top: 0; left: 0; width: 100%; }
+#footernav { bottom: 0; left: 0; width: 100%; }
+header { top: 10%; left: 0; text-align: center; width: 100%; }
+#bottom { bottom: 5%; left: 0; text-align: center;  width: 100%; }
+#left { left: 0; top: 45%; -webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg); -ms-transform: rotate(-90deg); -o-transform: rotate(-90deg); }
+#right { right: 0; top: 45%; -webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); -ms-transform: rotate(90deg); -o-transform: rotate(90deg); }
+#stonesgrid { margin: 5%; padding: 0; width: 90%; }
+#stonesgrid li, #placesgrid li { float: left; list-style: none; }
+#stonesgrid img { width: 100%; }
+#placesgrid img { width: 80%; margin: 10%; }
+#placesgrid { margin: 5%; padding: 0; width: 90%; }
+
+#coordsgrid { margin: 10% 5%; padding: 0; width: 90%; }
+#coordsgrid li { float: left; list-style: none; padding: 5% 0; text-align: center; font-size: 1.25em; } /* 20px */
+#coordsgrid a { display: inline-block; width: 100%; color: #000; }
+#coordsgrid a:hover { color: #fff; }
+
+
+#stone { width: 100%; height: 100%; overflow: hidden; position: absolute; z-index: 10; }
+#stone img { width: 100%; }
+#stone div.coordinates { display: table; width: 100%; height: 100%; position: absolute; }
+#stone div.wrapper { display:table-cell; vertical-align:middle; text-align: center; }
+
+#stone a.coordinates { color: #000; text-align: center; } /* 80px */
+#stone a.coordinates:hover { color: #fff; }

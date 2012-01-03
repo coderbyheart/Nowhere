@@ -1,0 +1,17 @@
+{% extends "base.twig" %}
+{% block content %}
+    {% for stone in stones %}
+        {% if loop.first %}
+        <ul id="coordsgrid">
+        {% endif %}
+            <li>
+                <a href="/stone/{{ stone.number }}" title="Coordinates in {{ stone.locality }}, {{ stone.country }} where {{ stone.person }} found a stone.">
+                    {{ stone.lat }}<br />
+                    {{ stone.lng }}<br />
+                </a>
+            </li>
+        {% if loop.last %}
+        </ul>
+        {% endif %}
+    {% endfor %}
+{% endblock content %}

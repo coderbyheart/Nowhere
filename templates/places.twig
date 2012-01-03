@@ -1,0 +1,14 @@
+{% extends "base.twig" %}
+{% block content %}
+    {% for stone in stones %}
+        {% if loop.first %}
+        <ul id="placesgrid">
+        {% endif %}
+            <li>
+                <a href="/stone/{{ stone.number }}" title="{{ stone.locality }} in {{ stone.country }} where {{ stone.person }} found a stone."><img src="/media/stones/{{ stone.number }}-place-150.png" alt="{{ stone.locality }} in {{ stone.country }} where {{ stone.person }} found a stone." /></a>
+            </li>
+        {% if loop.last %}
+        </ul>
+        {% endif %}
+    {% endfor %}
+{% endblock content %}
