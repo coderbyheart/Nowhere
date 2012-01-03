@@ -4,20 +4,33 @@
    Modify as content requires.
    ========================================================================== */
 
+@media screen {
+    #stonesgrid, #placesgrid, #coordsgrid { margin: 20%; width: 60%; }
+    #stonesgrid li, #placesgrid li, #coordsgrid li { width: 100%; }
+    #stone a.coordinates { font-size: 2em;}
+    #placesgrid img { width: 100%; margin: 0; }
+    h1, h2 { text-align: center; }
+    .desktop { display: none; }
+    .mobile { display: block; }
+}
+
 @media screen and (min-width: 480px) {
-    /* Style adjustments for viewports 480px and over go here */
-    #stonesgrid { margin: 10%; width: 80%; }
+    #stonesgrid { margin: 20% 10% 10% 10%; width: 80%; }
     #stonesgrid li { width: 33.3333333333%; }
+    #placesgrid { margin: 10% 5% 5% 5%; width: 90%; }
     #placesgrid li { width: 50%; }
+    #placesgrid img { width: 80%; margin: 20% 10% 10% 10%; }
     #coordsgrid { margin: 20% 15% 5% 15%; width: 70%; }
     #coordsgrid li { width: 50%; }
     #stone a.coordinates { font-size: 2em;}
+    .desktop { display: block; }
+    .mobile { display: none; }
 }
 
 @media screen and (min-width: 768px) {
-    /* Style adjustments for viewports 768px and over go here */
-    #stonesgrid { margin: 7.5%; width: 85%; }
+    #stonesgrid { margin: 15% 7.5% 7.5% 7.5%; width: 85%; }
     #stonesgrid li { width: 20%; }
+    #placesgrid { margin: 7.5% 5% 5% 5%; width: 90%; }
     #placesgrid li { width: 33.3333333333%; }
     #coordsgrid { margin: 15% 5% 5% 5%; width: 90%; }
     #coordsgrid li { width: 33.3333333333%; }
@@ -25,9 +38,9 @@
 }
 
 @media screen and (min-width: 1200px) {
-    /* Style adjustments for viewports 1200px and over go here */
-    #stonesgrid { margin: 5%; width: 90%; }
+    #stonesgrid { margin: 10% 5% 5% 5%; width: 90%; }
     #stonesgrid li { width: 11.1111111111%; }
+    #placesgrid { margin: 5%; width: 90%; }
     #placesgrid li { width: 20%; }
     #coordsgrid { margin: 10% 5% 5% 5%; width: 90%; }
     #coordsgrid li { width: 20%; }

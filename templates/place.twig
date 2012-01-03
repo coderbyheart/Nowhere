@@ -1,7 +1,7 @@
 {% extends "base.twig" %}
 {% block content %}
 <div id="stone">
-    <a href="/stone/{{ stone.number }}/coordinates" title="Coordinates in {{ stone.locality }}, {{ stone.country }} where {{ stone.person }} found this stone.">
+    <a href="/stone/{{ stone.number }}/coordinates" title="Go to the coordinates in {{ stone.locality }}, {{ stone.country }} where {{ stone.person }} found this stone.">
         <img src="/media/stones/{{ stone.number }}-place-1024.jpg" alt="{{ stone.locality }} in {{ stone.country }} where {{ stone.person }} found this stone."/>
     </a>
 </div>
