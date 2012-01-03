@@ -23,20 +23,22 @@ nav a { margin: 2em; display: inline-block; }
 h1, h2 { font-size: 1.86666666667em; margin: 0; } /* 28px */
 h2 a { color: #000; }
 h2 a:hover { color: #fff; }
-#topnav, #footernav, header, #left, #right, #bottom { position: absolute; z-index: 100; }
+#topnav, #footernav, header, #left, #right, #bottom { position: fixed; z-index: 100; }
 #topnav { top: 0; left: 0; width: 100%; }
 #footernav { bottom: 0; left: 0; width: 100%; }
 header { top: 10%; left: 0; text-align: center; width: 100%; }
 #bottom { bottom: 5%; left: 0; text-align: center;  width: 100%; }
 #left { left: 0; top: 45%; -webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg); -ms-transform: rotate(-90deg); -o-transform: rotate(-90deg); }
 #right { right: 0; top: 45%; -webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); -ms-transform: rotate(90deg); -o-transform: rotate(90deg); }
-#stonesgrid { margin: 5%; padding: 0; width: 90%; }
+
+#stonesgrid { padding: 0; }
 #stonesgrid li, #placesgrid li { float: left; list-style: none; }
 #stonesgrid img { width: 100%; }
-#placesgrid img { width: 80%; margin: 10%; }
+
+#placesgrid img { width: 80%; margin: 20% 10% 10% 10%; }
 #placesgrid { margin: 5%; padding: 0; width: 90%; }
 
-#coordsgrid { margin: 10% 5%; padding: 0; width: 90%; }
+#coordsgrid { padding: 0; }
 #coordsgrid li { float: left; list-style: none; padding: 5% 0; text-align: center; font-size: 1.25em; } /* 20px */
 #coordsgrid a { display: inline-block; width: 100%; color: #000; }
 #coordsgrid a:hover { color: #fff; }
