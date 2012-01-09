@@ -9,13 +9,14 @@
     #stonesgrid li, #placesgrid li, #coordsgrid li { width: 100%; }
     #stone a.coordinates { font-size: 2em;}
     #placesgrid img { width: 100%; margin: 0; }
-    h1, h2 { text-align: center; }
     .desktop { display: none; }
     .mobile { display: block; }
+    article { font-size: 1.25em; margin: 25% auto 5% auto; width: 85%; }
+    article h1 { display: none; }
 }
 
 @media screen and (min-width: 480px) {
-    #stonesgrid { margin: 20% 10% 10% 10%; width: 80%; }
+    #stonesgrid { margin: 10%; width: 80%; }
     #stonesgrid li { width: 33.3333333333%; }
     #placesgrid { margin: 10% 5% 5% 5%; width: 90%; }
     #placesgrid li { width: 50%; }
@@ -25,24 +26,28 @@
     #stone a.coordinates { font-size: 2em;}
     .desktop { display: block; }
     .mobile { display: none; }
+    article { font-size: 1.5em; margin: 5% auto 5% auto; max-width: 600px; width: 75%; }
+    article h1 { display: block; }
 }
 
 @media screen and (min-width: 768px) {
-    #stonesgrid { margin: 15% 7.5% 7.5% 7.5%; width: 85%; }
+    #stonesgrid { margin: 7.5%; width: 85%; }
     #stonesgrid li { width: 20%; }
     #placesgrid { margin: 7.5% 5% 5% 5%; width: 90%; }
     #placesgrid li { width: 33.3333333333%; }
     #coordsgrid { margin: 15% 5% 5% 5%; width: 90%; }
     #coordsgrid li { width: 33.3333333333%; }
     #stone a.coordinates { font-size: 3em;}
+    article { font-size: 1.86666666667em; }
 }
 
 @media screen and (min-width: 1200px) {
-    #stonesgrid { margin: 10% 5% 5% 5%; width: 90%; }
+    #stonesgrid { margin: 5%; width: 90%; }
     #stonesgrid li { width: 11.1111111111%; }
     #placesgrid { margin: 5%; width: 90%; }
     #placesgrid li { width: 20%; }
     #coordsgrid { margin: 10% 5% 5% 5%; width: 90%; }
     #coordsgrid li { width: 20%; }
     #stone a.coordinates { font-size: 5em;}
+
 }

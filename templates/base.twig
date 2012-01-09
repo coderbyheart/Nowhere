@@ -1,4 +1,5 @@
 <!doctype html>
+<html lang="{% if lang == "de" %}de-de{% else %}en-us{% endif %}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -22,46 +23,38 @@
 <body>
 <nav id="topnav" class="desktop">
     <ul>
-        <li class="col1 left"><a href="/en/about">About</a></li>
-        <li class="col2"><a href="/de">DE</a></li>
-        <li class="col3"><a href="/en/stones" class="icon grid" title="Grid view"></a></li>
-        <li class="col3"><a href="/en/stones/list" class="icon list" title="List view"></a></li>
-        <li class="col2"><a href="/en">EN</a></li>
-        <li class="col1 right"><a href="/en/participate">Participate</a></li>
+        <li class="col1 left"><a href="/{{ lang }}/about" {% if navactive == "about" %}class="active"{% endif %}>About</a></li>
+        <li class="col1 center">
+            <a href="/" class="icon grid {% if navactive == "stones" %}active{% endif %}" title="Grid view" rel="bookmark"></a>
+            <a href="/{{ lang }}/stones/list" class="icon list {% if navactive == "stones-list" %}active{% endif %}" title="List view"></a>
+        </li>
+        <li class="col2">&nbsp;</li>
+        <li class="col1 center"><a href="/{% if lang == "en" %}de{% endif %}" hreflang="{% if lang == "en" %}de-de{% else %}en-us{% endif %}">{% if lang == "en" %}DE{% else %}EN{% endif %}</a></li>
+        <li class="col1 right"><a href="/{{ lang }}/participate" {% if navactive == "participate" %}class="active"{% endif %}>Participate</a></li>
     </ul>
 </nav>
 <nav id="footernav" class="desktop">
     <ul>
-        <li class="col1"><a href="/en/news">News</a></li>
-        <li class="col2"><a href="/en/contact">Contact</a></li>
+        <li class="col1"><a href="/{{ lang }}/news" {% if navactive == "news" %}class="active"{% endif %}>News</a></li>
+        <li class="col2"><a href="/{{ lang }}/contact" {% if navactive == "contact" %}class="active"{% endif %}>Contact</a></li>
     </ul>
 </nav>
 <nav id="mobilenav" class="mobile">
     <ul>
-        <li><a href="/">Stones</a></li>
-        <li><a href="/en/places">Places</a></li>
-        <li><a href="/en/about">About</a></li>
-        <li><a href="/">EN</a></li>
-        <li><a href="/de">DE</a></li>
-        <li><a href="/en/contact">Contact</a></li>
+        <li><a href="/" rel="bookmark" {% if navactive == "stones" %}class="active"{% endif %}>Stones</a></li>
+        <li><a href="/{{ lang }}/places" {% if navactive == "places" %}class="active"{% endif %}>Places</a></li>
+        <li><a href="/{{ lang }}/about" {% if navactive == "about" %}class="active"{% endif %}>About</a></li>
+        <li><a href="/{% if lang == "en" %}de{% endif %}" hreflang="{% if lang == "en" %}de-de{% else %}en-us{% endif %}">{% if lang == "en" %}DE{% else %}EN{% endif %}</a></li>
+        <li><a href="/{{ lang }}/contact" {% if navactive == "contact" %}class="active"{% endif %}>Contact</a></li>
     </ul>
 </nav>
-<header class="desktop">
-    <h1>Nowhere</h1>
-</header>
 <aside id="left" class="desktop">
-    <h2><a href="/">Stones</a></h2>
+    <h2><a href="/" {% if navactive == "stones" %}class="active"{% endif %}>Stones</a></h2>
 </aside>
 <aside id="right" class="desktop">
-    <h2><a href="/en/places">Places</a></h2>
+    <h2><a href="/{{ lang }}/places" {% if navactive == "places" %}class="active"{% endif %}>Places</a></h2>
 </aside>
-<aside id="bottom" class="desktop">
-    <h2><a href="/en/coordinates">Coordinates</a></h2>
-</aside>
-<div id="main">
-    {% block content %}
-    {% endblock content %}
-</div>
+{% block body %}{% endblock %}
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 <!-- scripts concatenated and minified via ant build script-->

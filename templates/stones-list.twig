@@ -1,0 +1,36 @@
+{% extends "base.twig" %}
+{% block body %}
+<header class="master">
+    <h1>Nowhere</h1>
+</header>
+{% for stone in stones %}
+{% if loop.first %}
+<table>
+    <thead>
+    <tr>
+        <th>No.</th>
+        <th>Country</th>
+        <th>City</th>
+        <th>Name</th>
+        <th>Coordinates</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% endif %}
+
+    <tr>
+        <td><a href="/{{ lang }}/stone/{{ stone.number }}">{{ stone.number }}</a></td>
+        <td><a href="/{{ lang }}/stone/{{ stone.number }}">{{ stone.country }}</a></td>
+        <td><a href="/{{ lang }}/stone/{{ stone.number }}">{{ stone.locality }}</a></td>
+        <td><a href="/{{ lang }}/stone/{{ stone.number }}">{{ stone.person }}</a></td>
+        <td><a href="/{{ lang }}/stone/{{ stone.number }}">{{ stone.lat }} {{ stone.lng }}</a></td>
+    </tr>
+
+    {% if loop.last %}
+    </tbody>
+</table>
+{% endif %}
+{% else %}
+<p>No stones found.</p>
+{% endfor %}
+{% endblock %}

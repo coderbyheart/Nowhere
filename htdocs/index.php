@@ -4,6 +4,10 @@ error_reporting(-1);
 ini_set('display_errors', 1);
 setlocale(LC_ALL, 'de_DE.utf8');
 
+$stonesCsvURL = 'https://docs.google.com/spreadsheet/pub?hl=de&hl=de&key=0AtTPpgm7INxMdDB4Qm42QWZrNEtKRTdkUHAwWjJSTkE&single=true&gid=0&output=csv';
+$cacheFile = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'nowhere.csv';
+if (!is_file($cacheFile) || filemtime($cacheFile) < time() - 3600) copy($stonesCsvURL, $cacheFile);
+
 function fopen_utf8($filename, $mode)
 {
     $file = @fopen($filename, $mode);
@@ -18,8 +22,9 @@ function fopen_utf8($filename, $mode)
  */
 function getStones()
 {
+    global $cacheFile;
     $stones = array();
-    $fp = fopen_utf8('./media/stones.csv', 'r');
+    $fp = fopen_utf8($cacheFile, 'r');
     while ($stoneData = fgetcsv($fp)) {
         $stone = new Stone();
         $stone->setNumber($stoneData[0]);
@@ -40,7 +45,7 @@ function getStones()
  */
 function getStone($id)
 {
-    foreach(getStones() as $Stone) {
+    foreach (getStones() as $Stone) {
         if ($Stone->getNumber() == $id) return $Stone;
     }
 }
@@ -58,37 +63,67 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 
 $app->get('/', function() use($app)
 {
-    return $app['twig']->render('index.twig', array('stones' => getStones()));
+    return $app->redirect('/en/stones');
 });
 
-$app->get('/en/places', function() use($app)
+$app->get('/{lang}', function($lang) use($app)
 {
-
-    return $app['twig']->render('places.twig', array('stones' => getStones()));
+    return $app->redirect("/$lang/stones");
 });
 
-$app->get('/en/coordinates', function() use($app)
+$app->get('/{lang}/stones', function($lang) use($app)
 {
-
-    return $app['twig']->render('coordinates.twig', array('stones' => getStones()));
+    return $app['twig']->render('stones.twig', array('lang' => $lang, 'navactive' => 'stones', 'stones' => getStones()));
 });
 
-$app->get('/stone/{id}', function($id) use($app)
+$app->get('/{lang}/stones/list', function($lang) use($app)
 {
-
-    return $app['twig']->render('stone.twig', array('stone' => getStone($id)));
+    return $app['twig']->render('stones-list.twig', array('lang' => $lang, 'navactive' => 'stones', 'stones' => getStones()));
 });
 
-$app->get('/stone/{id}/place', function($id) use($app)
+$app->get('/{lang}/places', function($lang) use($app)
 {
-
-    return $app['twig']->render('place.twig', array('stone' => getStone($id)));
+    return $app['twig']->render('places.twig', array('lang' => $lang, 'navactive' => 'places', 'stones' => getStones()));
 });
 
-$app->get('/stone/{id}/coordinates', function($id) use($app)
+$app->get('/{lang}/coordinates', function($lang) use($app)
 {
+    return $app['twig']->render('coordinates.twig', array('lang' => $lang, 'navactive' => 'coordinates', 'stones' => getStones()));
+});
 
-    return $app['twig']->render('coordinate.twig', array('stone' => getStone($id)));
+$app->get('/{lang}/stone/{id}', function($lang, $id) use($app)
+{
+    return $app['twig']->render('stone.twig', array('lang' => $lang, 'navactive' => 'stones', 'stone' => getStone($id)));
+});
+
+$app->get('/{lang}/stone/{id}/place', function($lang, $id) use($app)
+{
+    return $app['twig']->render('place.twig', array('lang' => $lang, 'navactive' => 'places', 'stone' => getStone($id)));
+});
+
+$app->get('/{lang}/stone/{id}/coordinates', function($lang, $id) use($app)
+{
+    return $app['twig']->render('coordinate.twig', array('lang' => $lang, 'navactive' => 'coordinates', 'stone' => getStone($id)));
+});
+
+$app->get('/{lang}/contact', function($lang) use($app)
+{
+    return $app['twig']->render('contact.twig', array('lang' => $lang, 'navactive' => 'contact'));
+});
+
+$app->get('/{lang}/about', function($lang) use($app)
+{
+    return $app['twig']->render('about.twig', array('lang' => $lang, 'navactive' => 'about'));
+});
+
+$app->get('/{lang}/participate', function($lang) use($app)
+{
+    return $app['twig']->render('participate.twig', array('lang' => $lang, 'navactive' => 'participate'));
+});
+
+$app->get('/{lang}/news', function($lang) use($app)
+{
+    return $app['twig']->render('news.twig', array('lang' => $lang, 'navactive' => 'news'));
 });
 
 $app->run();

@@ -1,8 +1,15 @@
 {% extends "base.twig" %}
-{% block content %}
-<div id="stone">
-    <a href="/stone/{{ stone.number }}/coordinates" title="Go to the coordinates in {{ stone.locality }}, {{ stone.country }} where {{ stone.person }} found this stone.">
-        <img src="/media/stones/{{ stone.number }}-place-1024.jpg" alt="{{ stone.locality }} in {{ stone.country }} where {{ stone.person }} found this stone."/>
-    </a>
+{% block body %}
+<header id="master" class="desktop">
+    <h1>Nowhere</h1>
+</header>
+<div id="main">
+    <div id="stone">
+        <a href="/{{ lang }}/stone/{{ stone.number }}/coordinates" title="Go to the coordinates in {{ stone.locality }}, {{ stone.country }} where {{ stone.person }} found this stone.">
+            <img src="/media/stones/{{ stone.number }}-place-1024.jpg" alt="{{ stone.locality }} in {{ stone.country }} where {{ stone.person }} found this stone."/>
+        </a>
+    </div>
 </div>
-{% endblock content %}
+{% from 'macros.twig' import coordlink %}
+{{ coordlink(lang, navactive) }}
+{% endblock %}

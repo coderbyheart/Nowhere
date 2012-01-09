@@ -6,13 +6,13 @@
 <div id="main">
     {% for stone in stones %}
     {% if loop.first %}
-    <ul id="placesgrid">
+    <ul id="stonesgrid">
         {% endif %}
         <li>
             <a href="/{{ lang }}/stone/{{ stone.number }}"
-               title="{{ stone.locality }} in {{ stone.country }} where {{ stone.person }} found a stone."><img
-                    src="/media/stones/{{ stone.number }}-place-150.png"
-                    alt="{{ stone.locality }} in {{ stone.country }} where {{ stone.person }} found a stone."/></a>
+               title="Stone found by {{ stone.person }} in {{ stone.locality }}, {{ stone.country }}"><img
+                    src="/media/stones/{{ stone.number }}-stone-150.png"
+                    alt="Stone found by {{ stone.person }} in {{ stone.locality }}, {{ stone.country }}"/></a>
         </li>
         {% if loop.last %}
     </ul>
@@ -21,4 +21,4 @@
 </div>
 {% from 'macros.twig' import coordlink %}
 {{ coordlink(lang, navactive) }}
-{% endblock %}
+{% endblock body %}

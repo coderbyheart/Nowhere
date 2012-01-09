@@ -1,0 +1,5 @@
+{% macro coordlink(lang, navactive) %}
+<aside id="bottom" class="desktop">
+    <h2><a href="/{{ lang }}/coordinates" {% if navactive == "coordinates" %}class="active"{% endif %}>Coordinates</a></h2>
+</aside>
+{% endmacro %}

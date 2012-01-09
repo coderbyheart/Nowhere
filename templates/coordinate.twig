@@ -1,16 +1,24 @@
 {% extends "base.twig" %}
-{% block content %}
-<div id="stone">
-    <div class="coordinates">
-        <div class="wrapper">
-            <a href="http://maps.google.com/?ll={{ stone.latc }},{{ stone.lngc }}&amp;spn=0.1,0.1&amp;q={{ stone.latc }},{{ stone.lngc }}"
-               title="Show this place ({{ stone.locality }} in {{ stone.country }}) in Google Maps" class="coordinates">
-                {{ stone.lat }}<br/>
-                {{ stone.lng }}
-            </a>
+{% block body %}
+<header id="master" class="desktop">
+    <h1>Nowhere</h1>
+</header>
+<div id="main">
+    <div id="stone">
+        <div class="coordinates">
+            <div class="wrapper">
+                <a href="http://maps.google.com/?ll={{ stone.latc }},{{ stone.lngc }}&amp;spn=0.1,0.1&amp;q={{ stone.latc }},{{ stone.lngc }}"
+                   title="Show this place ({{ stone.locality }} in {{ stone.country }}) in Google Maps"
+                   class="coordinates">
+                    {{ stone.lat }}<br/>
+                    {{ stone.lng }}
+                </a>
+            </div>
         </div>
+        <img src="/media/stones/{{ stone.number }}-place-1024.jpg"
+             alt="{{ stone.locality }} in {{ stone.country }} where {{ stone.person }} found this stone."/>
     </div>
-    <img src="/media/stones/{{ stone.number }}-place-1024.jpg"
-         alt="{{ stone.locality }} in {{ stone.country }} where {{ stone.person }} found this stone."/>
 </div>
-{% endblock content %}
+{% from 'macros.twig' import coordlink %}
+{{ coordlink(lang, navactive) }}
+{% endblock %}
