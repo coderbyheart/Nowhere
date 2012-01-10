@@ -39,7 +39,7 @@
 <nav id="mobilenav" class="mobile">
     <ul>
         <li><a href="/" rel="bookmark" {% if navactive == "stones" %}class="active"{% endif %}>Stones</a></li>
-        <li><a href="/{{ lang }}/places" {% if navactive == "places" %}class="active"{% endif %}>Places</a></li>
+        <li><a href="/{{ lang }}/places" id="placeslink" {% if navactive == "places" %}class="active"{% endif %}>Places</a></li>
         <li><a href="/{{ lang }}/about" {% if navactive == "about" %}class="active"{% endif %}>About</a></li>
         <li><a href="/{% if lang == "en" %}de{% endif %}" hreflang="{% if lang == "en" %}de-de{% else %}en-us{% endif %}">{% if lang == "en" %}DE{% else %}EN{% endif %}</a></li>
         <li><a href="/{{ lang }}/contact" {% if navactive == "contact" %}class="active"{% endif %}>Contact</a></li>

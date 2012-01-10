@@ -39,4 +39,14 @@ var positionStone = function () {
 jQuery(function ($) {
     $(document).ready(positionStone);
     $(window).resize(positionStone);
+    $('.link-home').click(function (ev) {
+        document.location = $('a[rel=bookmark]').prop('href');
+    });
+    $('.link-stones-or-places').click(function (ev) {
+        if ($.cookie('stones_or_places') == 'places') {
+            document.location = $('#placeslink').prop('href');
+        } else {
+            document.location = $('a[rel=bookmark]').prop('href');
+        }
+    });
 });

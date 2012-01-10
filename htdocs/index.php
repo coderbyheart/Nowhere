@@ -73,16 +73,19 @@ $app->get('/{lang}', function($lang) use($app)
 
 $app->get('/{lang}/stones', function($lang) use($app)
 {
+    setcookie('stones_or_places', 'stones');
     return $app['twig']->render('stones.twig', array('lang' => $lang, 'navactive' => 'stones', 'stones' => getStones()));
 });
 
 $app->get('/{lang}/stones/list', function($lang) use($app)
 {
+    setcookie('stones_or_places', 'stones');
     return $app['twig']->render('stones-list.twig', array('lang' => $lang, 'navactive' => 'stones', 'stones' => getStones()));
 });
 
 $app->get('/{lang}/places', function($lang) use($app)
 {
+    setcookie('stones_or_places', 'places');
     return $app['twig']->render('places.twig', array('lang' => $lang, 'navactive' => 'places', 'stones' => getStones()));
 });
 

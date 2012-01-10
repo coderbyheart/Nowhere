@@ -3,6 +3,7 @@ html { background-color: #e7ebeb; color: #000; font-family: Arial, sans-serif; f
 .colororange { color: #eb6c5f; }
 .center { text-align: center; }
 .nowrap { white-space: nowrap; }
+.link { cursor: pointer; }
 .icon { display: inline-block; width: 16px; height: 12px; }
 .icon.grid { background-image: url(../img/grid-b.png); }
 .icon.grid:hover { background-image: url(../img/grid-w.png); }

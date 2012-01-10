@@ -6,7 +6,7 @@
 <div id="main">
     <div id="stone">
         <div class="coordinates">
-            <div class="wrapper">
+            <div class="wrapper link link-stones-or-places">
                 <a href="http://maps.google.com/?ll={{ stone.latc }},{{ stone.lngc }}&amp;spn=0.1,0.1&amp;q={{ stone.latc }},{{ stone.lngc }}"
                    title="Show this place ({{ stone.locality }} in {{ stone.country }}) in Google Maps"
                    class="coordinates">
@@ -16,9 +16,10 @@
             </div>
         </div>
         <img src="/media/stones/{{ stone.number }}-place-2048.jpg"
-             alt="{{ stone.locality }} in {{ stone.country }} where {{ stone.person }} found this stone." width="{{ size[0] }}" height="{{ size[1] }}" />
+             alt="{{ stone.locality }} in {{ stone.country }} where {{ stone.person }} found this stone."
+             width="{{ size[0] }}" height="{{ size[1] }}" />
     </div>
 </div>
 {% from 'macros.twig' import coordlink %}
 {{ coordlink(lang, navactive) }}
-{% endblock %}
+        {% endblock %}
