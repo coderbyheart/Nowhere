@@ -18,18 +18,18 @@ jQuery(function ($) {
         var images = grid.find('img');
         images.mouseenter(loadHighresThumbnailListener);
         images.mousewheel(loadHighresThumbnailListener);
-        var numVer = Math.round(grid.width() / elements.first().width());
-        var numHor = Math.round(elements.length / numVer);
+        // Make the grid square
+        var numEls = elements.length;
+        var numHor = Math.ceil(Math.sqrt(numEls));
+        elements.css('width', (100 / numHor) + '%');
         var gridbox = $(document.createElement('div'));
         gridbox.css({'width':'100%', 'height':'100%', 'overflow':'hidden', 'position':'absolute', 'z-index':10});
         gridbox.addClass('gridbox');
         grid.wrap(gridbox);
-        var initMargin = (($(window).width() - grid.width()) / 2);
-        grid.css({'margin':0, 'position':'relative', 'left':initMargin + 'px', 'top':initMargin + 'px'});
+        var gridWidth = grid.width() * 2.25; // Initialer Zoom = 225%
+        var initMargin = (($(window).width() - gridWidth) / 2);
+        grid.css({'margin':0, 'position':'relative', 'left':initMargin + 'px', 'top':initMargin + 'px', 'width': gridWidth + 'px'});
         grid.draggable();
-        images.each(function (idx, img) {
-            loadHighresThumbnail(img);
-        });
 
         if (!grid.hasClass('nozoom')) grid.mousewheel(function (event, delta, deltaX, deltaY) {
             var theWidth = grid.width();
