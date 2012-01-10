@@ -50,7 +50,7 @@ function getStone($id)
     }
 }
 
-require_once __DIR__ . '/../vendor/Silex/autoload.php';
+require_once __DIR__ . '/../vendor/silex.phar';
 require_once __DIR__ . '/../lib/Model/Stone.php';
 
 $app = new Silex\Application();
@@ -58,7 +58,7 @@ $app['debug'] = true;
 
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__ . '/../templates',
-    'twig.class_path' => __DIR__ . '/../vendor/Silex/vendor/twig/lib',
+    'twig.class_path' => __DIR__ . '/../vendor/twig/lib',
 ));
 
 $app->get('/', function() use($app)
