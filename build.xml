@@ -33,7 +33,6 @@
             <fileset file="${htdocs.dir}/js/script.js"/>
             <fileset file="${htdocs.dir}/js/libs/jquery-ui-1.8.16.custom.min.js"/>
             <fileset file="${htdocs.dir}/js/libs/jquery.mousewheel.js"/>
-            <fileset file="${htdocs.dir}/js/libs/modernizer.js"/>
             <fileset file="${htdocs.dir}/js/drag.js"/>
         </concat>
 
