@@ -11,10 +11,7 @@
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/helpers.css">
-    <link rel="stylesheet" href="/css/media.css">
+    <link rel="stylesheet" href="/assets/complete-min.css">
 
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -55,13 +52,10 @@
     <h2><a href="/{{ lang }}/places" {% if navactive == "places" %}class="active"{% endif %}>Places</a></h2>
 </aside>
 {% block body %}{% endblock %}
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
-<script src="/js/libs/jquery-ui-1.8.16.custom.min.js"></script>
-<script src="/js/libs/jquery.mousewheel.js"></script>
-<!-- scripts concatenated and minified via ant build script-->
-<script src="/js/plugins.js"></script>
-<script src="/js/script.js"></script>
+<script src="/assets/base-min.js"></script>
 <!-- end scripts-->
 <!--[if lt IE 7 ]>
 <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
