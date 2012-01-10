@@ -36,14 +36,17 @@ var positionStone = function () {
     }
 };
 
-var loadHighresThumbnail = function(ev) {
-    var img = $(ev.target);
+var loadHighresThumbnail = function (img) {
+    img = $(img);
     if (img.width() > 250) {
         var src = img.prop('src');
-        if (src.match(/stone-150\.png/)) {
-            img.prop('src', src.replace(/stone-150\.png/, 'stone-1024.png'));
+        if (src.match(/-150\./)) {
+            img.prop('src', src.replace(/-150\./, '-1024.'));
         }
     }
+};
+var loadHighresThumbnailListener = function (ev) {
+    loadHighresThumbnail(ev.target);
 };
 
 jQuery(function ($) {
@@ -53,17 +56,20 @@ jQuery(function ($) {
     var grid = $(".draggrid");
     var elements = grid.find('li');
     var images = grid.find('img');
-    images.mouseenter(loadHighresThumbnail);
-    images.mousewheel(loadHighresThumbnail);
+    images.mouseenter(loadHighresThumbnailListener);
+    images.mousewheel(loadHighresThumbnailListener);
     var numVer = Math.round(grid.width() / elements.first().width());
     var numHor = Math.round(elements.length / numVer);
     var gridbox = $(document.createElement('div'));
-    gridbox.css({'width': '100%', 'height': '100%', 'overflow': 'hidden', 'position': 'absolute', 'z-index': 10});
+    gridbox.css({'width':'100%', 'height':'100%', 'overflow':'hidden', 'position':'absolute', 'z-index':10});
+    gridbox.addClass('gridbox');
     grid.wrap(gridbox);
     var initMargin = (($(window).width() - grid.width()) / 2);
-    grid.css({'margin': 0, 'position': 'relative', 'left': initMargin + 'px', 'top': initMargin + 'px'});
+    grid.css({'margin':0, 'position':'relative', 'left':initMargin + 'px', 'top':initMargin + 'px'});
     grid.draggable();
-    grid.mousewheel(function (event, delta, deltaX, deltaY) {
+    images.each(function(idx, img) { loadHighresThumbnail(img); });
+
+    if (!grid.hasClass('nozoom')) grid.mousewheel(function (event, delta, deltaX, deltaY) {
         var theWidth = grid.width();
         var theHeight = elements.first().height() * numHor;
         var newWidth = theWidth * (deltaY > 0 ? 1.05 : 0.95 );
@@ -77,9 +83,7 @@ jQuery(function ($) {
         var vr = (event.pageY - pos.top) / theHeight;
 
         grid.css({
-            'width':newWidth
-            ,'left': pos.left - offSetLeft * hr
-            ,'top': pos.top - offSetTop * vr
+            'width':newWidth, 'left':pos.left - offSetLeft * hr, 'top':pos.top - offSetTop * vr
         });
     });
 

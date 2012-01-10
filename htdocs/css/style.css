@@ -2,6 +2,7 @@ html { background-color: #e7ebeb; color: #000; font-family: Arial, sans-serif; f
 .colorblue { color: #445c98; }
 .colororange { color: #eb6c5f; }
 .center { text-align: center; }
+.nowrap { white-space: nowrap; }
 .icon { display: inline-block; width: 16px; height: 12px; }
 .icon.grid { background-image: url(../img/grid-b.png); }
 .icon.grid:hover { background-image: url(../img/grid-w.png); }
@@ -38,7 +39,7 @@ table a:hover, tr:hover a { color: #eb6c5f; }
 #placesgrid { padding: 0; }
 
 #coordsgrid { padding: 0; }
-#coordsgrid li { float: left; list-style: none; padding: 5% 0; text-align: center; font-size: 1.25em; } /* 20px */
+#coordsgrid li { float: left; list-style: none; padding: 5% 0; text-align: center; font-size: 1em; } /* 16px */
 #coordsgrid a { display: inline-block; width: 100%; color: #000; }
 #coordsgrid a:hover { color: #fff; }
 

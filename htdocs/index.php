@@ -98,12 +98,12 @@ $app->get('/{lang}/stone/{id}', function($lang, $id) use($app)
 
 $app->get('/{lang}/stone/{id}/place', function($lang, $id) use($app)
 {
-    return $app['twig']->render('place.twig', array('lang' => $lang, 'navactive' => 'places', 'stone' => getStone($id), 'size' => getimagesize('media' . DIRECTORY_SEPARATOR . 'stones' . DIRECTORY_SEPARATOR . $id . '-place-1024.jpg')));
+    return $app['twig']->render('place.twig', array('lang' => $lang, 'navactive' => 'places', 'stone' => getStone($id), 'size' => getimagesize('media' . DIRECTORY_SEPARATOR . 'stones' . DIRECTORY_SEPARATOR . $id . '-place-2048.jpg')));
 });
 
 $app->get('/{lang}/stone/{id}/coordinates', function($lang, $id) use($app)
 {
-    return $app['twig']->render('coordinate.twig', array('lang' => $lang, 'navactive' => 'coordinates', 'stone' => getStone($id), 'size' => getimagesize('media' . DIRECTORY_SEPARATOR . 'stones' . DIRECTORY_SEPARATOR . $id . '-place-1024.jpg')));
+    return $app['twig']->render('coordinate.twig', array('lang' => $lang, 'navactive' => 'coordinates', 'stone' => getStone($id), 'size' => getimagesize('media' . DIRECTORY_SEPARATOR . 'stones' . DIRECTORY_SEPARATOR . $id . '-place-2048.jpg')));
 });
 
 $app->get('/{lang}/contact', function($lang) use($app)
