@@ -1,33 +1,37 @@
 var positionStone = function () {
     var stoneImg = $('#stone img');
     if (stoneImg.length > 0) {
+        if (!stoneImg.data('width')) {
+            stoneImg.data('width', parseInt(stoneImg.prop('width'), 10));
+            stoneImg.data('height', parseInt(stoneImg.prop('height'), 10));
+            stoneImg.prop("width", null);
+            stoneImg.prop("height", null);
+        }
         var wwidth = $(window).width();
         var wheight = $(window).height();
-        var iwidth = stoneImg.width();
-        var iheight = stoneImg.height();
+        var iwidth = stoneImg.data('width');
+        var iheight = stoneImg.data('height');
         var wr = wheight / wwidth;
         var ir = iheight / iwidth;
         var wr2 = wwidth / wheight;
         var ir2 = iwidth / iheight;
 
         if (wr <= ir) {
-            stoneImg.css('width', '100%');
-            stoneImg.css('height', 'auto');
+            var theHeight = (wwidth / iwidth) * iheight;
+            stoneImg.css('width', wwidth);
+            stoneImg.css('height', theHeight);
             stoneImg.css('margin-left', '0');
-            stoneImg.css('margin-top', ((wheight - iheight) / 2) + 'px');
+            stoneImg.css('margin-top', ((wheight - theHeight) / 2) + 'px');
         } else if (wr2 <= ir2) {
-            stoneImg.css('width', 'auto');
-            stoneImg.css('height', '100%');
+            var theWidth = (wheight / iheight) * iwidth;
+            stoneImg.css('width', theWidth);
+            stoneImg.css('height', wheight);
             stoneImg.css('margin-top', '0');
-            stoneImg.css('margin-left', ((wwidth - iwidth) / 2) + 'px');
+            stoneImg.css('margin-left', ((wwidth - theWidth) / 2) + 'px');
         }
     }
 };
-var positionStone2 = function () {
-    positionStone();
-    positionStone();
-}
 jQuery(function ($) {
-    $(window).load(positionStone2);
+    $(document).ready(positionStone);
     $(window).resize(positionStone);
 });
