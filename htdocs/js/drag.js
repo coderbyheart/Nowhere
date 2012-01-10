@@ -22,6 +22,7 @@ jQuery(function ($) {
         var numEls = elements.length;
         var numHor = Math.ceil(Math.sqrt(numEls));
         elements.css('width', (100 / numHor) + '%');
+        elements.css('height', (100 / numHor) + '%');
         var gridbox = $(document.createElement('div'));
         gridbox.css({'width':'100%', 'height':'100%', 'overflow':'hidden', 'position':'absolute', 'z-index':10});
         gridbox.addClass('gridbox');
@@ -47,6 +48,10 @@ jQuery(function ($) {
             grid.css({
                 'width':newWidth, 'left':pos.left - offSetLeft * hr, 'top':pos.top - offSetTop * vr
             });
+
+            if (grid.prop('id') == 'coordsgrid') {
+                grid.find('img.imagetext').prop('width', (newWidth / numHor) * 0.7);
+            }
         });
     }
 });

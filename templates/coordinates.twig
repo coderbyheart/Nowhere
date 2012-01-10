@@ -6,13 +6,13 @@
 <div id="main">
     {% for stone in stones %}
     {% if loop.first %}
-    <ul id="coordsgrid" class="draggrid nozoom">
+    <ul id="coordsgrid" class="draggrid">
         {% endif %}
         <li>
             <a href="/{{ lang }}/stone/{{ stone.number }}"
                title="Coordinates in {{ stone.locality }}, {{ stone.country }} where {{ stone.person }} found a stone.">
-                <span class="nowrap">{{ stone.lat }}</span><br/>
-                <span class="nowrap">{{ stone.lng }}</span><br/>
+                <span class="textimage textimage-coordinates">{{ stone.lat }}</span><br/>
+                <span class="textimage textimage-coordinates">{{ stone.lng }}</span>
             </a>
         </li>
         {% if loop.last %}
