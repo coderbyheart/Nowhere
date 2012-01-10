@@ -6,7 +6,7 @@
 <div id="main">
     {% for stone in stones %}
     {% if loop.first %}
-    <ul id="stonesgrid">
+    <ul id="stonesgrid" class="draggrid">
         {% endif %}
         <li>
             <a href="/{{ lang }}/stone/{{ stone.number }}"
