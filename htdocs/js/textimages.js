@@ -11,8 +11,7 @@ function createTextImage(el) {
     img.prop('src', '/image.php?class=' + encodeURIComponent(tagname) + '&text=' + encodeURIComponent(elText));
     img.prop('alt', elText);
     img.addClass('imagetext');
-    el.after(img);
-    el.detach();
+    el.append(img);
 }
 
 jQuery(function ($) {

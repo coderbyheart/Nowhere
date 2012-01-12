@@ -17,7 +17,7 @@
         </div>
         <img src="/media/stones/{{ stone.number }}-place-2048.jpg"
              alt="{{ stone.locality }} in {{ stone.country }} where {{ stone.person }} found this stone."
-             width="{{ size[0] }}" height="{{ size[1] }}" />
+             width="{{ stone.width }}" height="{{ stone.height }}" />
     </div>
 </div>
 {% from 'macros.twig' import coordlink %}

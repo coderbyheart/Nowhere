@@ -38,10 +38,13 @@ table a:hover, tr:hover a { color: #eb6c5f; }
 #stonesgrid img { width: 100%; }
 
 #placesgrid { padding: 0; }
+#placesgrid li { display: table; }
+#placesgrid a { display: block; height: 100%; width: 100%; vertical-align: middle; text-align: center; display: table-cell; }
 
 #coordsgrid { padding: 0; }
-#coordsgrid li { float: left; list-style: none; }
-#coordsgrid a { display: block; width: 100%; height: 100%; overflow: hidden; }
+#coordsgrid li { float: left; list-style: none; display: table; }
+#coordsgrid a { display: table-cell; vertical-align: middle; text-align: center; width: 100%; height: 100%; overflow: hidden; color: #000; }
+#coordsgrid img.imagetext { width: 70%; }
 
 #stone { width: 100%; height: 100%; overflow: hidden; position: absolute; z-index: 10; }
 /* #stone img { width: 100%; margin: auto 0; } */

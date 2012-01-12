@@ -12,7 +12,9 @@
             <a href="/{{ lang }}/stone/{{ stone.number }}"
                title="{{ stone.locality }} in {{ stone.country }} where {{ stone.person }} found a stone."><img
                     src="/media/stones/{{ stone.number }}-place-150.jpg"
-                    alt="{{ stone.locality }} in {{ stone.country }} where {{ stone.person }} found a stone."/></a>
+                    alt="{{ stone.locality }} in {{ stone.country }} where {{ stone.person }} found a stone."
+                    class="{% if stone.ar < 1 %}landscape{% else %}portrait{% endif %}"
+                    /></a>
         </li>
         {% if loop.last %}
     </ul>

@@ -8,7 +8,8 @@
     .draggrid { margin: 20%; width: 60%; }
     .draggrid li { width: 100%; }
     #stone a.coordinates { font-size: 2em;}
-    #placesgrid img { width: 100%; margin: 0; }
+    #placesgrid img.landscape { width: 100%; margin: 0; }
+    #placesgrid img.portrait { height: 100%; margin: 0; }
     .desktop { display: none; }
     .mobile { display: block; }
     article { font-size: 1.25em; margin: 25% auto 5% auto; width: 85%; }
@@ -18,7 +19,8 @@
 @media screen and (min-width: 480px) {
     .draggrid { margin: 10%; width: 80%; }
     .draggrid li { width: 33.3333333333%; }
-    #placesgrid img { width: 80%; margin: 20% 10% 10% 10%; }
+    #placesgrid img.landscape { width: 80%; }
+    #placesgrid img.portrait { height: 80%; }
     #stone a.coordinates { font-size: 2em;}
     .desktop { display: block; }
     .mobile { display: none; }

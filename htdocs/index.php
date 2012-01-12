@@ -33,6 +33,15 @@ function getStones()
         $stone->setPerson($stoneData[3]);
         $stone->setLat($stoneData[4]);
         $stone->setLng($stoneData[5]);
+        $apcKey = 'nowhere-image-size-' . $stone->getNumber();
+        if (!apc_exists($apcKey)) {
+            apc_store($apcKey, getimagesize('media' . DIRECTORY_SEPARATOR . 'stones' . DIRECTORY_SEPARATOR . $stone->getNumber() . '-place-2048.jpg'));
+        }
+        $sizeinfo = apc_fetch($apcKey);
+        $width = $sizeinfo[0];
+        $height = $sizeinfo[1];
+        $stone->setWidth($width);
+        $stone->setHeight($height);
         $stones[] = $stone;
     }
     fclose($fp);
@@ -101,12 +110,12 @@ $app->get('/{lang}/stone/{id}', function($lang, $id) use($app)
 
 $app->get('/{lang}/stone/{id}/place', function($lang, $id) use($app)
 {
-    return $app['twig']->render('place.twig', array('lang' => $lang, 'navactive' => 'places', 'stone' => getStone($id), 'size' => getimagesize('media' . DIRECTORY_SEPARATOR . 'stones' . DIRECTORY_SEPARATOR . $id . '-place-2048.jpg')));
+    return $app['twig']->render('place.twig', array('lang' => $lang, 'navactive' => 'places', 'stone' => getStone($id)));
 });
 
 $app->get('/{lang}/stone/{id}/coordinates', function($lang, $id) use($app)
 {
-    return $app['twig']->render('coordinate.twig', array('lang' => $lang, 'navactive' => 'coordinates', 'stone' => getStone($id), 'size' => getimagesize('media' . DIRECTORY_SEPARATOR . 'stones' . DIRECTORY_SEPARATOR . $id . '-place-2048.jpg')));
+    return $app['twig']->render('coordinate.twig', array('lang' => $lang, 'navactive' => 'coordinates', 'stone' => getStone($id)));
 });
 
 $app->get('/{lang}/contact', function($lang) use($app)

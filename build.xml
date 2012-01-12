@@ -42,7 +42,7 @@
         <concat destfile="${final_css}" force="true" fixlastline="true">
             <fileset file="${htdocs.dir}/css/normalize.css"/>
             <fileset file="${htdocs.dir}/css/style.css"/>
-            <fileset file="${htdocs.dir}/css/helper.css"/>
+            <fileset file="${htdocs.dir}/css/helpers.css"/>
             <fileset file="${htdocs.dir}/css/media.css"/>
         </concat>
 
