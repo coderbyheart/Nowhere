@@ -1,0 +1,59 @@
+msgid "About"
+msgstr "Über"
+
+msgid "Grid view"
+msgstr "Gitteransicht"
+
+msgid "List view"
+msgstr "Listenansicht"
+
+msgid "Participate"
+msgstr "Mitmachen"
+
+msgid "News"
+msgstr "Neues"
+
+msgid "Contact"
+msgstr "Kontakt"
+
+msgid "Stones"
+msgstr "Steine"
+
+msgid "Places"
+msgstr "Orte"
+
+msgid "Coordinates"
+msgstr "Koordinaten"
+
+msgid "%locality% in %country% where %person% found this stone."
+msgstr "%locality% in %country% wo %person% diesen Stein gefunden hat."
+
+msgid "Show this place (%locality% in %country%) in Google Maps."
+msgstr "Zeige diesen Ort (%locality% in %country%) in Google Maps an."
+
+msgid "Coordinates in %locality%, %country% where %person% found a stone."
+msgstr "Koordinaten in %locality%, %country% wo %person% einen Stein gefunden hat."
+
+msgid "Go to the coordinates in %locality%, %country% where %person% found this stone."
+msgstr "Gehe zu den Koordinaten in %locality%, %country% wo %person% diesen Stein gefunden hat."
+
+msgid "%locality% in %country% where %person% found a stone."
+msgstr "%locality% in %country% wo %person% einen Stein gefunden hat"
+
+msgid "Got to %locality% in %country% where %person% found this stone."
+msgstr "Gehe zu %locality% in %country% wo %person% diesen Stein gefunden hat."
+
+msgid "Stone found by %person% in %locality%, %country%."
+msgstr "Stein gefunden von %person% in %locality%, %country%."
+
+msgid "No."
+msgstr "Nr."
+
+msgid "Country"
+msgstr "Land"
+
+msgid "City"
+msgstr "Stadt"
+
+msgid "Name"
+msgstr "Name"

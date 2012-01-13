@@ -61,14 +61,43 @@ function getStone($id)
 
 require_once __DIR__ . '/../vendor/silex.phar';
 require_once __DIR__ . '/../lib/Model/Stone.php';
+require_once __DIR__ . '/../vendor/TwigExtensions/lib/Twig/Extensions/Autoloader.php';
+Twig_Extensions_Autoloader::register();
 
 $app = new Silex\Application();
 $app['debug'] = true;
 
+$app->register(new Silex\Provider\SymfonyBridgesServiceProvider(), array(
+    'symfony_bridges.class_path' => __DIR__ . '/../vendor/symfony/src',
+));
+
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__ . '/../templates',
     'twig.class_path' => __DIR__ . '/../vendor/twig/lib',
+    /*
+     Why? See: https://github.com/fabpot/Silex/issues/235
+    'twig.configure' => function(\Twig_Environment $twig)
+    {
+        $twig->addExtension(new Twig_Extensions_Extension_I18n());
+    }
+    */
 ));
+$app['twig']->addExtension(new Twig_Extensions_Extension_I18n());
+
+
+$app->before(function () use ($app) {
+    $locale = 'en_US.utf8';
+    if ($lang = $app['request']->get('lang')) {
+        if ($lang == 'de') {
+            $locale = 'de_DE.utf8';
+        }
+    }
+    putenv('LC_ALL=' . $locale);
+    setlocale(LC_ALL, $locale);
+    bindtextdomain('nowhere', __DIR__ . '/../locale/');
+    bind_textdomain_codeset('nowhere', 'UTF-8');
+    textdomain('nowhere');
+});
 
 $app->get('/', function() use($app)
 {

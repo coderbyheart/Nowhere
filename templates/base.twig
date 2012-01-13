@@ -20,36 +20,36 @@
 <body>
 <nav id="topnav" class="desktop">
     <ul>
-        <li class="col1 left"><a href="/{{ lang }}/about" class="hover textimage {% if navactive == "about" %}textimage-nav-active{% else %}textimage-nav{% endif %}">About</a></li>
+        <li class="col1 left"><a href="/{{ lang }}/about" class="hover textimage {% if navactive == "about" %}textimage-nav-active{% else %}textimage-nav{% endif %}">{% trans %}About{% endtrans %}</a></li>
         <li class="col1 center">
-            <a href="/" class="icon grid {% if navactive == "stones" %}active{% endif %}" title="Grid view" rel="bookmark"></a>
-            <a href="/{{ lang }}/stones/list" class="icon list {% if navactive == "stones-list" %}active{% endif %}" title="List view"></a>
+            <a href="/" class="icon grid {% if navactive == "stones" %}active{% endif %}" title="{% trans %}Grid view{% endtrans %}" rel="bookmark"></a>
+            <a href="/{{ lang }}/stones/list" class="icon list {% if navactive == "stones-list" %}active{% endif %}" title="{% trans %}List view{% endtrans %}"></a>
         </li>
         <li class="col2">&nbsp;</li>
         <li class="col1 center"><a href="/{% if lang == "en" %}de{% endif %}" hreflang="{% if lang == "en" %}de-de{% else %}en-us{% endif %}" class="hover textimage textimage-nav">{% if lang == "en" %}DE{% else %}EN{% endif %}</a></li>
-        <li class="col1 right"><a href="/{{ lang }}/participate" class="hover textimage {% if navactive == "participate" %}textimage-nav-active{% else %}textimage-nav{% endif %}">Participate</a></li>
+        <li class="col1 right"><a href="/{{ lang }}/participate" class="hover textimage {% if navactive == "participate" %}textimage-nav-active{% else %}textimage-nav{% endif %}">{% trans %}Participate{% endtrans %}</a></li>
     </ul>
 </nav>
 <nav id="footernav" class="desktop">
     <ul>
-        <li class="col1"><a href="/{{ lang }}/news" class="hover textimage {% if navactive == "news" %}textimage-nav-active{% else %}textimage-nav{% endif %}">News</a></li>
-        <li class="col2"><a href="/{{ lang }}/contact" class="hover textimage {% if navactive == "contact" %}textimage-nav-active{% else %}textimage-nav{% endif %}">Contact</a></li>
+        <li class="col1"><a href="/{{ lang }}/news" class="hover textimage {% if navactive == "news" %}textimage-nav-active{% else %}textimage-nav{% endif %}">{% trans %}News{% endtrans %}</a></li>
+        <li class="col2"><a href="/{{ lang }}/contact" class="hover textimage {% if navactive == "contact" %}textimage-nav-active{% else %}textimage-nav{% endif %}">{% trans %}Contact{% endtrans %}</a></li>
     </ul>
 </nav>
 <nav id="mobilenav" class="mobile">
     <ul>
-        <li><a href="/" rel="bookmark" class="hover textimage {% if navactive == "stones" %}textimage-nav-active{% else %}textimage-nav{% endif %}">Stones</a></li>
-        <li><a href="/{{ lang }}/places" id="placeslink" class="hover textimage {% if navactive == "places" %}textimage-nav-active{% else %}textimage-nav{% endif %}">Places</a></li>
-        <li><a href="/{{ lang }}/about" class="hover textimage {% if navactive == "about" %}textimage-nav-active{% else %}textimage-nav{% endif %}">About</a></li>
+        <li><a href="/" rel="bookmark" class="hover textimage {% if navactive == "stones" %}textimage-nav-active{% else %}textimage-nav{% endif %}">{% trans %}Stones{% endtrans %}</a></li>
+        <li><a href="/{{ lang }}/places" id="placeslink" class="hover textimage {% if navactive == "places" %}textimage-nav-active{% else %}textimage-nav{% endif %}">{% trans %}Places{% endtrans %}</a></li>
+        <li><a href="/{{ lang }}/about" class="hover textimage {% if navactive == "about" %}textimage-nav-active{% else %}textimage-nav{% endif %}">{% trans %}About{% endtrans %}</a></li>
         <li><a href="/{% if lang == "en" %}de{% endif %}" hreflang="{% if lang == "en" %}de-de{% else %}en-us{% endif %}">{% if lang == "en" %}DE{% else %}EN{% endif %}</a></li>
-        <li><a href="/{{ lang }}/contact" class="hover textimage {% if navactive == "contact" %}textimage-nav-active{% else %}textimage-nav{% endif %}">Contact</a></li>
+        <li><a href="/{{ lang }}/contact" class="hover textimage {% if navactive == "contact" %}textimage-nav-active{% else %}textimage-nav{% endif %}">{% trans %}Contact{% endtrans %}</a></li>
     </ul>
 </nav>
 <aside id="left" class="desktop">
-    <h2><a href="/" class="hover textimage {% if navactive == "stones" %}textimage-h2-active{% else %}textimage-h2{% endif %}">Stones</a></h2>
+    <h2><a href="/" class="hover textimage {% if navactive == "stones" %}textimage-h2-active{% else %}textimage-h2{% endif %}">{% trans %}Stones{% endtrans %}</a></h2>
 </aside>
 <aside id="right" class="desktop">
-    <h2><a href="/{{ lang }}/places" class="hover textimage {% if navactive == "places" %}textimage-h2-active{% else %}textimage-h2{% endif %}">Places</a></h2>
+    <h2><a href="/{{ lang }}/places" class="hover textimage {% if navactive == "places" %}textimage-h2-active{% else %}textimage-h2{% endif %}">{% trans %}Places{% endtrans %}</a></h2>
 </aside>
 {% block body %}{% endblock %}
 

@@ -2,3 +2,9 @@
 	path = vendor/twig
 	url = git://github.com/fabpot/Twig.git
 
+[submodule "vendor/TwigExtensions"]
+	path = vendor/TwigExtensions
+	url = https://github.com/fabpot/Twig-extensions
+[submodule "vendor/symfony/src/Symfony/Bridge/Twig"]
+	path = vendor/symfony/src/Symfony/Bridge/Twig
+	url = https://github.com/symfony/TwigBridge.git

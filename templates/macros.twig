@@ -1,5 +1,5 @@
 {% macro coordlink(lang, navactive) %}
 <aside id="bottom" class="desktop">
-    <h2><a href="/{{ lang }}/coordinates" class="hover textimage {% if navactive == "coordinates" %}textimage-h2-active{% else %}textimage-h2{% endif %}">Coordinates</a></h2>
+    <h2><a href="/{{ lang }}/coordinates" class="hover textimage {% if navactive == "coordinates" %}textimage-h2-active{% else %}textimage-h2{% endif %}">{% trans %}Coordinates{% endtrans %}</a></h2>
 </aside>
 {% endmacro %}

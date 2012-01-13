@@ -1,12 +1,15 @@
 {% extends "base.twig" %}
+{% set locality = stone.locality %}
+{% set country = stone.country %}
+{% set person = stone.person %}
 {% block body %}
 <header id="master" class="desktop">
     <h1 class="textimage">Nowhere</h1>
 </header>
 <div id="main">
     <div id="stone">
-        <a href="/{{ lang }}/stone/{{ stone.number }}/coordinates" title="Go to the coordinates in {{ stone.locality }}, {{ stone.country }} where {{ stone.person }} found this stone.">
-            <img src="/media/stones/{{ stone.number }}-place-2048.jpg" alt="{{ stone.locality }} in {{ stone.country }} where {{ stone.person }} found this stone." width="{{ stone.width }}" height="{{ stone.height }}" class="resize" />
+        <a href="/{{ lang }}/stone/{{ stone.number }}/coordinates" title="{% trans %}Go to the coordinates in {{ locality }}, {{ country }} where {{ person }} found this stone.{% endtrans %}">
+            <img src="/media/stones/{{ stone.number }}-place-2048.jpg" alt="{% trans %}{{ locality }} in {{ country }} where {{ person }} found this stone.{% endtrans %}" width="{{ stone.width }}" height="{{ stone.height }}" class="resize" />
         </a>
     </div>
 </div>

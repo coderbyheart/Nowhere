@@ -8,11 +8,14 @@
     {% if loop.first %}
     <ul id="placesgrid" class="draggrid">
         {% endif %}
+        {% set locality = stone.locality %}
+        {% set country = stone.country %}
+        {% set person = stone.person %}
         <li>
             <a href="/{{ lang }}/stone/{{ stone.number }}"
-               title="{{ stone.locality }} in {{ stone.country }} where {{ stone.person }} found a stone."><img
+               title="{% trans %}{{ locality }} in {{ country }} where {{ person }} found a stone.{% endtrans %}"><img
                     src="/media/stones/{{ stone.number }}-place-150.jpg"
-                    alt="{{ stone.locality }} in {{ stone.country }} where {{ stone.person }} found a stone."
+                    alt="{% trans %}{{ locality }} in {{ country }} where {{ person }} found a stone.{% endtrans %}"
                     class="{% if stone.ar < 1 %}landscape{% else %}portrait{% endif %}"
                     /></a>
         </li>

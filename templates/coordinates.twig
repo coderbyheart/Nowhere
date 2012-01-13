@@ -8,9 +8,12 @@
     {% if loop.first %}
     <ul id="coordsgrid" class="draggrid">
         {% endif %}
+        {% set locality = stone.locality %}
+        {% set country = stone.country %}
+        {% set person = stone.person %}
         <li>
             <a href="/{{ lang }}/stone/{{ stone.number }}"
-               title="Coordinates in {{ stone.locality }}, {{ stone.country }} where {{ stone.person }} found a stone.">
+               title="{% trans %}Coordinates in {{ locality }}, {{ country }} where {{ person }} found a stone.{% endtrans %}">
                 <span class="textimage textimage-coordinates">{{ stone.lat }}</span><br/>
                 <span class="textimage textimage-coordinates">{{ stone.lng }}</span>
             </a>
