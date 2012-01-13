@@ -49,4 +49,9 @@ jQuery(function ($) {
             document.location = $('a[rel=bookmark]').prop('href');
         }
     });
+    $('a.external').click(function (ev) {
+        ev.preventDefault();
+        window.open($(ev.target).parents('a').prop('href'));
+        return false;
+    });
 });
