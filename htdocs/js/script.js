@@ -1,5 +1,5 @@
 var positionStone = function () {
-    var stoneImg = $('#stone img');
+    var stoneImg = $('#stone img.resize');
     if (stoneImg.length > 0) {
         if (!stoneImg.data('width')) {
             stoneImg.data('width', parseInt(stoneImg.prop('width'), 10));

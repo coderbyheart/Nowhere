@@ -1,14 +1,14 @@
 {% extends "base.twig" %}
 {% block body %}
 <header id="master" class="desktop">
-    <h1>Nowhere</h1>
+    <h1 class="textimage">Nowhere</h1>
 </header>
 <div id="main">
     <div id="stone">
         <a href="/{{ lang }}/stone/{{ stone.number }}/place"
            title="Got to {{ stone.locality }} in {{ stone.country }} where {{ stone.person }} found this stone.">
             <img src="/media/stones/{{ stone.number }}-stone-2048.png"
-                 alt="Stone found by {{ stone.person }} in {{ stone.locality }}, {{ stone.country }}" width="2048" height="2048" />
+                 alt="Stone found by {{ stone.person }} in {{ stone.locality }}, {{ stone.country }}" width="2048" height="2048" class="resize" />
         </a>
     </div>
 </div>

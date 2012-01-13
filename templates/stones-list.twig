@@ -1,29 +1,30 @@
 {% extends "base.twig" %}
 {% block body %}
 <header class="master">
-    <h1>Nowhere</h1>
+    <h1 class="textimage">Nowhere</h1>
 </header>
 {% for stone in stones %}
 {% if loop.first %}
 <table>
     <thead>
     <tr>
-        <th>No.</th>
-        <th>Country</th>
-        <th>City</th>
-        <th>Name</th>
-        <th>Coordinates</th>
+        <th class="textimage textimage-listing-small">No.</th>
+        <th class="textimage textimage-listing-small">Country</th>
+        <th class="textimage textimage-listing-small">City</th>
+        <th class="textimage textimage-listing-small">Name</th>
+        <th class="textimage textimage-listing-small" colspan="2">Coordinates</th>
     </tr>
     </thead>
     <tbody>
     {% endif %}
 
-    <tr>
-        <td><a href="/{{ lang }}/stone/{{ stone.number }}">{{ stone.number }}</a></td>
-        <td><a href="/{{ lang }}/stone/{{ stone.number }}">{{ stone.country }}</a></td>
-        <td><a href="/{{ lang }}/stone/{{ stone.number }}">{{ stone.locality }}</a></td>
-        <td><a href="/{{ lang }}/stone/{{ stone.number }}">{{ stone.person }}</a></td>
-        <td><a href="/{{ lang }}/stone/{{ stone.number }}">{{ stone.lat }} {{ stone.lng }}</a></td>
+    <tr class="hover">
+        <td><a href="/{{ lang }}/stone/{{ stone.number }}" class="hover-parent textimage textimage-listing">{{ stone.number }}</a></td>
+        <td><a href="/{{ lang }}/stone/{{ stone.number }}" class="hover-parent textimage textimage-listing">{{ stone.country }}</a></td>
+        <td><a href="/{{ lang }}/stone/{{ stone.number }}" class="hover-parent textimage textimage-listing">{{ stone.locality }}</a></td>
+        <td><a href="/{{ lang }}/stone/{{ stone.number }}" class="hover-parent textimage textimage-listing">{{ stone.person }}</a></td>
+        <td><a href="/{{ lang }}/stone/{{ stone.number }}" class="hover-parent textimage textimage-listing">{{ stone.lat }}</a></td>
+        <td><a href="/{{ lang }}/stone/{{ stone.number }}" class="hover-parent textimage textimage-listing">{{ stone.lng }}</a></td>
     </tr>
 
     {% if loop.last %}

@@ -1,7 +1,7 @@
 {% extends "base.twig" %}
 {% block body %}
 <header id="master" class="desktop">
-    <h1>Nowhere</h1>
+    <h1 class="textimage">Nowhere</h1>
 </header>
 <div id="main">
     <div id="stone">
@@ -9,15 +9,15 @@
             <div class="wrapper link link-stones-or-places">
                 <a href="http://maps.google.com/?ll={{ stone.latc }},{{ stone.lngc }}&amp;spn=0.1,0.1&amp;q={{ stone.latc }},{{ stone.lngc }}"
                    title="Show this place ({{ stone.locality }} in {{ stone.country }}) in Google Maps"
-                   class="coordinates">
-                    {{ stone.lat }}<br/>
-                    {{ stone.lng }}
+                   class="coordinates hover">
+                    <span class="hover-parent textimage textimage-coordinates-large">{{ stone.lat }}</span><br/>
+                    <span class="hover-parent textimage textimage-coordinates-large">{{ stone.lng }}</span>
                 </a>
             </div>
         </div>
         <img src="/media/stones/{{ stone.number }}-place-2048.jpg"
              alt="{{ stone.locality }} in {{ stone.country }} where {{ stone.person }} found this stone."
-             width="{{ stone.width }}" height="{{ stone.height }}" />
+             width="{{ stone.width }}" height="{{ stone.height }}" class="resize"/>
     </div>
 </div>
 {% from 'macros.twig' import coordlink %}

@@ -19,6 +19,9 @@ h1, h2 { font-size: 1.86666666667em; margin: 0; } /* 28px */
 h2 a { color: #000; }
 h2 a:hover { color: #fff; }
 h2 a.active { color: #eb6c5f; }
+.hover .imagetext.over { display: none; }
+.hover:hover .imagetext.over { display: inline-block; }
+.hover:hover .imagetext.normal { display: none; }
 
 article { color: #445c98; font-weight: bold; }
 article h1 { font-size: 1em; text-align: center; }
@@ -26,7 +29,7 @@ article a { color: inherit; text-decoration: underline; }
 article a:hover { color: #eb6c5f; }
 
 table { color: #445c98; white-space: nowrap; margin: 5% auto 5% auto; } /* 9px */
-td, th { padding: 0.25em 0.5em; }
+td, th { padding: 0.25em 0.5em; vertical-align: top; }
 thead { font-size: 0.5625em; text-decoration: underline; text-align: left; font-weight: normal; }
 tbody { font-size: 0.75em; }
 td:first-child { text-align: right; }
