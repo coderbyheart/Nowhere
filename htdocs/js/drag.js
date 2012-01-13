@@ -14,7 +14,7 @@ var loadHighresThumbnailListener = function (ev) {
 jQuery(function ($) {
     var grid = $(".draggrid");
     var elements = grid.find('li');
-    if (navigator.userAgent.toLowerCase().match(/(ipad|iphone|mobile)/) == null) {
+    if (!istouch) {
         var images = grid.find('img');
         images.mouseenter(loadHighresThumbnailListener);
         images.mousewheel(loadHighresThumbnailListener);

@@ -24,10 +24,18 @@ function createTextImage(el) {
     if (classMatch) tagname = classMatch[1];
     addText(tagname, elText, el, false);
     if (el.hasClass("hover")) {
-        addText(tagname, elText, el, true);
+        if (istouch) {
+            el.removeClass("hover");
+        } else {
+            addText(tagname, elText, el, true);
+        }
     }
     if (el.hasClass("hover-parent")) {
-        addText(tagname, elText, el, true);
+        if (istouch) {
+            el.parents('.hover:first').removeClass("hover");
+        } else {
+            addText(tagname, elText, el, true);
+        }
     }
 }
 ;

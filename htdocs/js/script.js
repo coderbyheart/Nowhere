@@ -1,3 +1,5 @@
+var istouch = navigator.userAgent.toLowerCase().match(/(ipad|iphone|mobile)/) != null;
+
 var positionStone = function () {
     var stoneImg = $('#stone img.resize');
     if (stoneImg.length > 0) {
