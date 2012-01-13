@@ -74,16 +74,11 @@ $app->register(new Silex\Provider\SymfonyBridgesServiceProvider(), array(
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__ . '/../templates',
     'twig.class_path' => __DIR__ . '/../vendor/twig/lib',
-    /*
-     Why? See: https://github.com/fabpot/Silex/issues/235
-    'twig.configure' => function(\Twig_Environment $twig)
+    'twig.configure' => $app->protect(function(\Twig_Environment $twig)
     {
         $twig->addExtension(new Twig_Extensions_Extension_I18n());
-    }
-    */
+    })
 ));
-$app['twig']->addExtension(new Twig_Extensions_Extension_I18n());
-
 
 $app->before(function () use ($app) {
     $locale = 'en_US.utf8';
