@@ -82,3 +82,7 @@ nav li { float: left; }
 
 #mobilenav { position: fixed; top: 0; left: 0; width: 90%; margin: 5%; z-index: 100; }
 #mobilenav li { width: 20%; text-align: center; }
+
+.news { margin-bottom: 4em; }
+.news .date { color: #000; }
+.news .date:before { content: "— "; color: #eb6c5f; margin-left: -1.4em; }
