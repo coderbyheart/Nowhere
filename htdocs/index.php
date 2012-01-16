@@ -70,7 +70,6 @@ $app['debug'] = true;
 $app->register(new Silex\Provider\SymfonyBridgesServiceProvider(), array(
     'symfony_bridges.class_path' => __DIR__ . '/../vendor/symfony/src',
 ));
-
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__ . '/../templates',
     'twig.class_path' => __DIR__ . '/../vendor/twig/lib',
@@ -92,6 +91,7 @@ $app->before(function () use ($app) {
     bindtextdomain('nowhere', __DIR__ . '/../locale/');
     bind_textdomain_codeset('nowhere', 'UTF-8');
     textdomain('nowhere');
+    $app['twig']->addGlobal('lang', $lang);
 });
 
 $app->get('/', function() use($app)
@@ -107,59 +107,67 @@ $app->get('/{lang}', function($lang) use($app)
 $app->get('/{lang}/stones', function($lang) use($app)
 {
     setcookie('stones_or_places', 'stones');
-    return $app['twig']->render('stones.twig', array('lang' => $lang, 'navactive' => 'stones', 'stones' => getStones()));
+    return $app['twig']->render('stones.twig', array('navactive' => 'stones', 'stones' => getStones()));
 });
 
 $app->get('/{lang}/stones/list', function($lang) use($app)
 {
     setcookie('stones_or_places', 'stones');
-    return $app['twig']->render('stones-list.twig', array('lang' => $lang, 'navactive' => 'stones', 'stones' => getStones()));
+    return $app['twig']->render('stones-list.twig', array('navactive' => 'stones', 'stones' => getStones()));
 });
 
 $app->get('/{lang}/places', function($lang) use($app)
 {
     setcookie('stones_or_places', 'places');
-    return $app['twig']->render('places.twig', array('lang' => $lang, 'navactive' => 'places', 'stones' => getStones()));
+    return $app['twig']->render('places.twig', array('navactive' => 'places', 'stones' => getStones()));
 });
 
 $app->get('/{lang}/coordinates', function($lang) use($app)
 {
-    return $app['twig']->render('coordinates.twig', array('lang' => $lang, 'navactive' => 'coordinates', 'stones' => getStones()));
+    return $app['twig']->render('coordinates.twig', array('navactive' => 'coordinates', 'stones' => getStones()));
 });
 
 $app->get('/{lang}/stone/{id}', function($lang, $id) use($app)
 {
-    return $app['twig']->render('stone.twig', array('lang' => $lang, 'navactive' => 'stones', 'stone' => getStone($id)));
+    return $app['twig']->render('stone.twig', array('navactive' => 'stones', 'stone' => getStone($id)));
 });
 
 $app->get('/{lang}/stone/{id}/place', function($lang, $id) use($app)
 {
-    return $app['twig']->render('place.twig', array('lang' => $lang, 'navactive' => 'places', 'stone' => getStone($id)));
+    return $app['twig']->render('place.twig', array('navactive' => 'places', 'stone' => getStone($id)));
 });
 
 $app->get('/{lang}/stone/{id}/coordinates', function($lang, $id) use($app)
 {
-    return $app['twig']->render('coordinate.twig', array('lang' => $lang, 'navactive' => 'coordinates', 'stone' => getStone($id)));
+    return $app['twig']->render('coordinate.twig', array('navactive' => 'coordinates', 'stone' => getStone($id)));
 });
 
 $app->get('/{lang}/contact', function($lang) use($app)
 {
-    return $app['twig']->render('contact.twig', array('lang' => $lang, 'navactive' => 'contact'));
+    return $app['twig']->render('contact.twig', array('navactive' => 'contact'));
 });
 
 $app->get('/{lang}/about', function($lang) use($app)
 {
-    return $app['twig']->render('about.twig', array('lang' => $lang, 'navactive' => 'about'));
+    return $app['twig']->render('about.twig', array('navactive' => 'about'));
 });
 
 $app->get('/{lang}/participate', function($lang) use($app)
 {
-    return $app['twig']->render('participate.twig', array('lang' => $lang, 'navactive' => 'participate'));
+    return $app['twig']->render('participate.twig', array('navactive' => 'participate'));
 });
 
 $app->get('/{lang}/news', function($lang) use($app)
 {
-    return $app['twig']->render('news.twig', array('lang' => $lang, 'navactive' => 'news'));
+    $media = array();
+    foreach(new RecursiveIteratorIterator(new RecursiveDirectoryIterator(__DIR__ . DIRECTORY_SEPARATOR . 'media' . DIRECTORY_SEPARATOR . 'news')) as $file) {
+        if ($file->isDir()) continue;
+        $imgPath = str_replace(__DIR__, '', $file->getPathName());
+        $parts = explode(DIRECTORY_SEPARATOR, $imgPath);
+        if (!isset($media[$parts[3]])) $media[$parts[3]] = array();
+        $media[$parts[3]][] = $imgPath;
+    }
+    return $app['twig']->render('news.twig', array('navactive' => 'news', 'media' => $media));
 });
 
 $app->run();

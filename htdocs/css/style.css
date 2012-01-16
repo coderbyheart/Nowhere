@@ -86,3 +86,5 @@ nav li { float: left; }
 .news { margin-bottom: 4em; }
 .news .date { color: #000; }
 .news .date:before { content: "— "; color: #eb6c5f; margin-left: -1.4em; }
+.news .media { text-align: center; }
+.news .media img { max-width: 300px; width: 100%; }

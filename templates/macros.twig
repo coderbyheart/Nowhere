@@ -1,5 +1,21 @@
 {% macro coordlink(lang, navactive) %}
 <aside id="bottom" class="desktop">
-    <h2><a href="/{{ lang }}/coordinates" class="hover textimage {% if navactive == "coordinates" %}textimage-h2-active{% else %}textimage-h2{% endif %}">{% trans %}Coordinates{% endtrans %}</a></h2>
+    <h2><a href="/{{ lang }}/coordinates"
+           class="hover textimage {% if navactive == "coordinates" %}textimage-h2-active{% else %}textimage-h2{% endif %}">{% trans %}Coordinates{% endtrans %}</a>
+    </h2>
 </aside>
+{% endmacro %}
+
+{% macro newsmedia(media, date) %}
+{% if media[date] is defined %}
+{% for img in media[date] %}
+{% if loop.first %}
+<div class="media">
+    {% endif %}
+    <img src="{{ img }}" /><br/>
+{% if loop.last %}
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
 {% endmacro %}
