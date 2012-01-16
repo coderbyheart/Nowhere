@@ -172,9 +172,10 @@ $app->post('/{lang}/participate', function($lang) use($app)
     try {
         $message = \Swift_Message::newInstance()
             ->setSubject('[Nowhere] Neuer Stein')
+	    ->setFrom(array('hello@project-nowhere.com'))
             ->setTo(array('hello@project-nowhere.com', 'm@tacker.org'))
             ->setBody($body)
-            ->attach(\Swift_Attachment::fromPath($app['request']->files->get('photo')->getPathname()));
+            ->attach(\Swift_Attachment::fromPath($app['request']->files->get('photo')->getPathname(), $app['request']->files->get('photo')->getMimeType()));
 
         $app['mailer']->send($message);
     } catch(\Swift_TransportException $e) {
