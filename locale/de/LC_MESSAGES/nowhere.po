@@ -57,3 +57,30 @@ msgstr "Stadt"
 
 msgid "Name"
 msgstr "Name"
+
+msgid "E-mail"
+msgstr "E-Mail"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "(optional)"
+msgstr "(optional)"
+
+msgid "Photography"
+msgstr "Foto"
+
+msgid "Lat."
+msgstr "Lat."
+
+msgid "Lon."
+msgstr "Lon."
+
+msgid "ZIP-code"
+msgstr "PLZ"
+
+msgid "submit"
+msgstr "absenden"
+
+msgid "Thank you very much!"
+msgstr "Vielen Dank!"

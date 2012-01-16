@@ -70,6 +70,9 @@ $app['debug'] = true;
 $app->register(new Silex\Provider\SymfonyBridgesServiceProvider(), array(
     'symfony_bridges.class_path' => __DIR__ . '/../vendor/symfony/src',
 ));
+$app->register(new Silex\Provider\SwiftmailerServiceProvider(), array(
+    'swiftmailer.class_path' => __DIR__ . '/../vendor/swiftmailer/lib/classes',
+));
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__ . '/../templates',
     'twig.class_path' => __DIR__ . '/../vendor/twig/lib',
@@ -79,7 +82,8 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     })
 ));
 
-$app->before(function () use ($app) {
+$app->before(function () use ($app)
+{
     $locale = 'en_US.utf8';
     if ($lang = $app['request']->get('lang')) {
         if ($lang == 'de') {
@@ -157,10 +161,33 @@ $app->get('/{lang}/participate', function($lang) use($app)
     return $app['twig']->render('participate.twig', array('navactive' => 'participate'));
 });
 
+$app->post('/{lang}/participate', function($lang) use($app)
+{
+
+    $body = '';
+    foreach(array('name', 'email', 'url', 'lat', 'lng', 'street', 'zip', 'city', 'country') as $k)  {
+        $body .= $k . ': ' . $app['request']->get($k) . PHP_EOL;
+    }
+
+    try {
+        $message = \Swift_Message::newInstance()
+            ->setSubject('[Nowhere] Neuer Stein')
+            ->setTo(array('hello@project-nowhere.com', 'm@tacker.org'))
+            ->setBody($body)
+            ->attach(\Swift_Attachment::fromPath($app['request']->files->get('photo')->getPathname()));
+
+        $app['mailer']->send($message);
+    } catch(\Swift_TransportException $e) {
+        $app->abort(500, 'Could not send mail: ' . $e->getMessage());
+    }
+
+    return $app['twig']->render('participate-ok.twig', array('navactive' => 'participate'));
+});
+
 $app->get('/{lang}/news', function($lang) use($app)
 {
     $media = array();
-    foreach(new RecursiveIteratorIterator(new RecursiveDirectoryIterator(__DIR__ . DIRECTORY_SEPARATOR . 'media' . DIRECTORY_SEPARATOR . 'news')) as $file) {
+    foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator(__DIR__ . DIRECTORY_SEPARATOR . 'media' . DIRECTORY_SEPARATOR . 'news')) as $file) {
         if ($file->isDir()) continue;
         $imgPath = str_replace(__DIR__, '', $file->getPathName());
         $parts = explode(DIRECTORY_SEPARATOR, $imgPath);

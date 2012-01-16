@@ -9,6 +9,7 @@ html { background-color: #e7ebeb; color: #000; font-family: Arial, sans-serif; f
 .icon.grid:hover { background-image: url(../img/grid-w.png); }
 .icon.list { background-image: url(../img/list-b.png); }
 .icon.list:hover { background-image: url(../img/list-w.png); }
+.right { text-align: right; }
 a { text-decoration: none; }
 nav { font-size: 0.9375em; } /* 15px */
 nav a { color: #000; }
@@ -88,3 +89,15 @@ nav li { float: left; }
 .news .date:before { content: "— "; color: #eb6c5f; margin-left: -1.4em; }
 .news .media { text-align: center; }
 .news .media img { max-width: 300px; width: 100%; }
+
+form { font-size: 0.875em; }
+form p { margin-bottom: 0.25em; }
+input { border: 0; border-bottom: 0.2em solid #fff; background-color: transparent; width: 100%; }
+input:focus { border-bottom: 0.25em solid #000; }
+button { border: 0.25em solid #fff; background: transparent; color: #fff; }
+
+fieldset { border: 0; padding: 0; margin: 0; }
+fieldset p.label { width: 30%; float: left; overflow: hidden; }
+p.coord { width: 35%; float: left; overflow: hidden; }
+p.coord label { width: 40%; float: left; }
+p.coord input { width: 60%; float: left; }

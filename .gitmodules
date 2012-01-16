@@ -8,3 +8,6 @@
 [submodule "vendor/symfony/src/Symfony/Bridge/Twig"]
 	path = vendor/symfony/src/Symfony/Bridge/Twig
 	url = https://github.com/symfony/TwigBridge.git
+[submodule "vendor/swiftmailer"]
+	path = vendor/swiftmailer
+	url = https://github.com/swiftmailer/swiftmailer.git

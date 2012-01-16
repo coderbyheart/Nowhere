@@ -59,6 +59,13 @@ $config['listing-small']['font'] = '../extra/Brown-Bold.otf';
 $config['listing-over'] = $config['listing'];
 $config['listing-over']['fg'] = '#EB6C5F';
 
+$config['label'] = $config['h1'];
+$config['label-small'] = $config['label'];
+$config['label-small']['size'] = 18;
+$config['button'] = $config['h1'];
+$config['button']['fg'] = '#ffffff';
+$config['button']['size'] = 22;
+
 $class = (isset($_GET['class'])) ? $_GET['class'] : 'menu';
 
 if (!isset($config[$class])) {

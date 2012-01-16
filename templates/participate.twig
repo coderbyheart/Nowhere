@@ -4,15 +4,71 @@
     <header>
         <h1 class="textimage">Nowhere</h1>
     </header>
-    <p>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
-        diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-        takimata sanctus est Lorem ipsum dolor sit amet.
-    </p>
+    <form method="POST" action="" enctype="multipart/form-data">
+        <p>
+            <label class="textimage" for="name">{% trans %}Name{% endtrans %}</label><br/>
+            <input type="text" name="name" id="name" placeholder="{% trans %}John Doe{% endtrans %}"
+                   required="required"/>
+        </p>
+
+        <p>
+            <label class="textimage" for="email">{% trans %}E-mail{% endtrans %}</label><br/>
+            <input type="email" name="email" id="email" placeholder="{% trans %}john.doe@example.com{% endtrans %}"
+                   required="required"/>
+        </p>
+
+        <p>
+            <label for="url"><span class="textimage textimage-label">{% trans %}URL{% endtrans %}</span>
+                <small class="textimage textimage-label-small">{% trans %}(optional){% endtrans %}</small>
+            </label><br/>
+            <input type="url" name="url" id="url" placeholder="{% trans %}http://example.com/{% endtrans %}"/>
+        </p>
+
+        <p>
+            <label class="textimage" for="photo">{% trans %}Photography{% endtrans %}</label><br/>
+            <input type="file" name="photo" id="photo" required="required"/>
+        </p>
+
+        <fieldset>
+            <p class="label">{% trans %}Coordinates{% endtrans %}</p>
+
+            <p class="coord">
+                <label class="textimage" for="lat">{% trans %}Lat.{% endtrans %}</label>
+                <input name="lat" id="lat" placeholder="50.0821" pattern="[1-9][0-9]*\.[0-9]+"
+                       required="required"/>
+            </p>
+
+            <p class="coord">
+                <label class="textimage" for="lng">{% trans %}Lon.{% endtrans %}</label>
+                <input name="lng" id="lng" placeholder="8.2414" pattern="[1-9][0-9]*\.[0-9]+"
+                       required="required"/>
+            </p>
+        </fieldset>
+
+        <p>
+            <label class="textimage" for="street">{% trans %}Street{% endtrans %}</label><br/>
+            <input type="text" name="street" id="street" placeholder="Vergissmeinnichtweg 15" required="required"/>
+        </p>
+
+        <p>
+            <label class="textimage" for="zip">{% trans %}ZIP-code{% endtrans %}</label><br/>
+            <input name="zip" id="zip" placeholder="65201" pattern="[0-9]+" required="required"/>
+        </p>
+
+        <p>
+            <label class="textimage" for="city">{% trans %}City{% endtrans %}</label><br/>
+            <input type="text" name="city" id="city" placeholder="Wiesbaden" required="required"/>
+        </p>
+
+        <p>
+            <label class="textimage" for="country">{% trans %}Country{% endtrans %}</label><br/>
+            <input type="text" name="country" id="country" placeholder="Germany" required="required"/>
+        </p>
+
+        <p class="right">
+            <button type="submit"><span class="textimage textimage-button">{% trans %}submit{% endtrans %}</span>
+            </button>
+        </p>
+    </form>
 </article>
-{% from 'macros.twig' import coordlink %}
-{{ coordlink(lang, navactive) }}
 {% endblock %}
