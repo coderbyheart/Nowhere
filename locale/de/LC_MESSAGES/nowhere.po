@@ -55,6 +55,9 @@ msgstr "Land"
 msgid "City"
 msgstr "Stadt"
 
+msgid "Street"
+msgstr "Straße"
+
 msgid "Name"
 msgstr "Name"
 
