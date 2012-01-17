@@ -66,6 +66,15 @@
         <delete dir="${build.dir}"/>
     </target>
 
-    <target name="main" depends="compress,concat,clean"/>
+    <target name="gettext">
+        <echo message="Building gettext files"/>
+        <exec executable="msgfmt">
+            <arg value="-o"/>
+            <arg value="${basedir}/locale/de/LC_MESSAGES/nowhere.mo"/>
+            <arg value="${basedir}/locale/de/LC_MESSAGES/nowhere.po"/>
+          </exec>
+    </target>
+
+    <target name="main" depends="compress,concat,gettext,clean"/>
 
 </project>

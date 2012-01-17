@@ -96,6 +96,7 @@ $app->before(function () use ($app)
     bind_textdomain_codeset('nowhere', 'UTF-8');
     textdomain('nowhere');
     $app['twig']->addGlobal('lang', $lang);
+    $app['twig']->addGlobal('langswitchlink', preg_replace('%^/' . $lang . '/%', '/' . ($lang === 'en' ? 'de' : 'en') . '/', $app['request']->getPathInfo()));
 });
 
 $app->get('/', function() use($app)

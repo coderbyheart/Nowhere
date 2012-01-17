@@ -2,6 +2,6 @@
 logs
 htdocs/media/stones/*.jpg
 htdocs/media/stones/*.png
-htdocs/assets/textimg/
-extra
-htdocs/media/news/
+htdocs/assets/textimg/*
+extra/*
+htdocs/media/news/*

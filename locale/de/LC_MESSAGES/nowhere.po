@@ -87,3 +87,12 @@ msgstr "absenden"
 
 msgid "Thank you very much!"
 msgstr "Vielen Dank!"
+
+msgid "John Doe"
+msgstr "Max Mustermann"
+
+msgid "john.doe@example.com"
+msgstr "max.mustermann@beispiel.de"
+
+msgid "http://example.com/"
+msgstr "http://beispiel.de/"

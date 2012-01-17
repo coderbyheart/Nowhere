@@ -1,4 +1,11 @@
 <!doctype html>
+<!--
+
+    Hoi fellow coder,
+    the source code for this project is available on GitHub:
+    https://github.com/tacker/Nowhere
+
+-->
 <html lang="{% if lang == "de" %}de-de{% else %}en-us{% endif %}">
 <head>
     <meta charset="utf-8">
@@ -26,7 +33,7 @@
             <a href="/{{ lang }}/stones/list" class="icon list {% if navactive == "stones-list" %}active{% endif %}" title="{% trans %}List view{% endtrans %}"></a>
         </li>
         <li class="col2">&nbsp;</li>
-        <li class="col1 center"><a href="/{% if lang == "en" %}de{% endif %}" hreflang="{% if lang == "en" %}de-de{% else %}en-us{% endif %}" class="hover textimage textimage-nav">{% if lang == "en" %}DE{% else %}EN{% endif %}</a></li>
+        <li class="col1 center"><a href="{{ langswitchlink }}" hreflang="{% if lang == "en" %}de-de{% else %}en-us{% endif %}" class="hover textimage textimage-nav">{% if lang == "en" %}DE{% else %}EN{% endif %}</a></li>
         <li class="col1 right"><a href="/{{ lang }}/participate" class="hover textimage {% if navactive == "participate" %}textimage-nav-active{% else %}textimage-nav{% endif %}">{% trans %}Participate{% endtrans %}</a></li>
     </ul>
 </nav>
@@ -41,7 +48,7 @@
         <li><a href="/" rel="bookmark" class="hover textimage {% if navactive == "stones" %}textimage-nav-active{% else %}textimage-nav{% endif %}">{% trans %}Stones{% endtrans %}</a></li>
         <li><a href="/{{ lang }}/places" id="placeslink" class="hover textimage {% if navactive == "places" %}textimage-nav-active{% else %}textimage-nav{% endif %}">{% trans %}Places{% endtrans %}</a></li>
         <li><a href="/{{ lang }}/about" class="hover textimage {% if navactive == "about" %}textimage-nav-active{% else %}textimage-nav{% endif %}">{% trans %}About{% endtrans %}</a></li>
-        <li><a href="/{% if lang == "en" %}de{% endif %}" hreflang="{% if lang == "en" %}de-de{% else %}en-us{% endif %}">{% if lang == "en" %}DE{% else %}EN{% endif %}</a></li>
+        <li><a href="{{ langswitchlink }}" hreflang="{% if lang == "en" %}de-de{% else %}en-us{% endif %}">{% if lang == "en" %}DE{% else %}EN{% endif %}</a></li>
         <li><a href="/{{ lang }}/contact" class="hover textimage {% if navactive == "contact" %}textimage-nav-active{% else %}textimage-nav{% endif %}">{% trans %}Contact{% endtrans %}</a></li>
     </ul>
 </nav>
