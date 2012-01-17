@@ -104,7 +104,33 @@ $app->get('/{lang}/stones', function($lang) use($app, $stonesReader)
 $app->get('/{lang}/stones/list', function($lang) use($app, $stonesReader)
 {
     setcookie('lastloc', '/' . $lang . '/stones/list', 0, '/');
-    return $app['twig']->render('stones-list.twig', array('navactive' => 'stones', 'stones' => $stonesReader->getStones()));
+
+    $stones = array();
+    $sort = array();
+    foreach ($stonesReader->getStones() as $stone) {
+        $stones[] = $stone;
+        switch ($app['request']->get('sort')) {
+            default:
+            case 'no':
+                $sort[] = $stone->getNumber();
+                break;
+            case 'country':
+                $sort[] = $stone->getCountry();
+                break;
+            case 'city':
+                $sort[] = $stone->getLocality();
+                break;
+            case 'name':
+                $sort[] = $stone->getPerson();
+                break;
+            case 'coordinates':
+                $sort[] = $stone->getLat();
+                break;
+        }
+    }
+    array_multisort($sort, SORT_ASC, $stones);
+
+    return $app['twig']->render('stones-list.twig', array('navactive' => 'stones', 'stones' => $stones));
 })->assert('lang', '[a-z]{2}');
 
 $app->get('/{lang}/places', function($lang) use($app, $stonesReader)

@@ -34,6 +34,7 @@ td, th { padding: 0.25em 0.5em; vertical-align: top; }
 thead { font-size: 0.5625em; text-decoration: underline; text-align: left; font-weight: normal; }
 tbody { font-size: 0.75em; }
 td:first-child { text-align: right; }
+th a { border-bottom: 1px solid #445c98; min-height: 12px; vertical-align: top; }
 table a { color: #445c98; }
 table a:hover, tr:hover a { color: #eb6c5f; }
 
