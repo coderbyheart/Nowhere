@@ -106,6 +106,7 @@ if (!isset($config[$class])) {
 }
 
 $text = (isset($_GET['text'])) ? $_GET['text'] : 'No text supplied';
+$text = str_replace(array("'", '"'), array('’', '“'), $text);
 $target = sprintf('assets/textimg/%s.png', md5($class . '-' . $text));
 
 if (is_file($target)) {
@@ -131,7 +132,7 @@ $cmd .= sprintf('-fill "%s" ', $config[$class]['fg']);
 $cmd .= '-gravity center ';
 $cmd .= '-font ' . $config[$class]['font'] . ' ';
 $cmd .= sprintf('-pointsize %d ', $config[$class]['size'] * 4);
-$cmd .= sprintf('-draw "text 0,%d \'%s\'" ', 0, str_replace("'", '', $text));
+$cmd .= sprintf('-draw "text 0,%d \'%s\'" ', 0, $text);
 $cmd .= '-resize 25% ';
 if (isset($config[$class]['trim']) && $config[$class]['trim']) $cmd .= '-trim ';
 $cmd .= escapeshellarg($target);
