@@ -1,68 +1,51 @@
 <?php
 
-error_reporting(-1);
-ini_set('display_errors', 1);
-setlocale(LC_ALL, 'de_DE.utf8');
-
-$stonesCsvURL = 'https://docs.google.com/spreadsheet/pub?hl=de&hl=de&key=0AtTPpgm7INxMdDB4Qm42QWZrNEtKRTdkUHAwWjJSTkE&single=true&gid=0&output=csv';
-$cacheFile = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'nowhere.csv';
-if (!is_file($cacheFile) || filemtime($cacheFile) < time() - 3600) copy($stonesCsvURL, $cacheFile);
-
-function fopen_utf8($filename, $mode)
-{
-    $file = @fopen($filename, $mode);
-    $bom = fread($file, 3);
-    if ($bom != "\xEF\xBB\xBF")
-        rewind($file, 0);
-    return $file;
-}
-
-/**
- * @return Stone[]
- */
-function getStones()
-{
-    global $cacheFile;
-    $stones = array();
-    $fp = fopen_utf8($cacheFile, 'r');
-    while ($stoneData = fgetcsv($fp)) {
-        $stone = new Stone();
-        $stone->setNumber($stoneData[0]);
-        $stone->setCountry($stoneData[1]);
-        $stone->setLocality($stoneData[2]);
-        $stone->setPerson($stoneData[3]);
-        $stone->setLat($stoneData[4]);
-        $stone->setLng($stoneData[5]);
-        $apcKey = 'nowhere-image-size-' . $stone->getNumber();
-        if (!apc_exists($apcKey)) {
-            apc_store($apcKey, getimagesize('media' . DIRECTORY_SEPARATOR . 'stones' . DIRECTORY_SEPARATOR . $stone->getNumber() . '-place-2048.jpg'));
-        }
-        $sizeinfo = apc_fetch($apcKey);
-        $width = $sizeinfo[0];
-        $height = $sizeinfo[1];
-        $stone->setWidth($width);
-        $stone->setHeight($height);
-        $stones[] = $stone;
-    }
-    fclose($fp);
-    return $stones;
-}
+// +----------------------------------------------------+
+// | The Project Nowhere website is free software:      |
+// | you can redistribute it and/or modify it under     |
+// | the terms of the GNU General Public License as     |
+// | published by the Free Software Foundation,         |
+// | either version 3 of the License, or (at your       |
+// | option) any later version.                         |
+// |                                                    |
+// | In addition you are required to retain all         |
+// | author attributions provided in this software      |
+// | and attribute all modifications made by you        |
+// | clearly and in an appropriate way.                 |
+// |                                                    |
+// | This software is distributed in the hope that      |
+// | it will be useful, but WITHOUT ANY WARRANTY;       |
+// | without even the implied warranty of               |
+// | MERCHANTABILITY or FITNESS FOR A PARTICULAR        |
+// | PURPOSE.  See the GNU General Public License for   |
+// | more details.                                      |
+// |                                                    |
+// | You should have received a copy of the GNU         |
+// | General Public License along with this software.   |
+// | If not, see <http://www.gnu.org/licenses/>.        |
+// +----------------------------------------------------+
 
 /**
- * @param int $id
- * @return Stone
+ * This is the main application fail which sets up the routing for silex
+ *
+ * @author Markus Tacker <m@coderbyheart.de>
  */
-function getStone($id)
-{
-    foreach (getStones() as $Stone) {
-        if ($Stone->getNumber() == $id) return $Stone;
-    }
-}
 
+/**
+ * Include local configuration
+ */
+require_once 'config.php';
+
+/**
+ * Include required libs
+ */
 require_once __DIR__ . '/../vendor/silex.phar';
+require_once __DIR__ . '/../lib/StonesReader.php';
 require_once __DIR__ . '/../lib/Model/Stone.php';
 require_once __DIR__ . '/../vendor/TwigExtensions/lib/Twig/Extensions/Autoloader.php';
 Twig_Extensions_Autoloader::register();
+
+$stonesReader = new StonesReader($config['stonesCSVFile']);
 
 $app = new Silex\Application();
 $app['debug'] = true;
@@ -81,14 +64,16 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
         $twig->addExtension(new Twig_Extensions_Extension_I18n());
     })
 ));
-
-$app->before(function () use ($app)
+$app['config'] = $app->share(function () use($app, $config)
 {
-    $locale = 'en_US.utf8';
+    return $config;
+});
+
+$app->before(function () use ($app, $config)
+{
+    $locale = $config['locales']['en'];
     if ($lang = $app['request']->get('lang')) {
-        if ($lang == 'de') {
-            $locale = 'de_DE.utf8';
-        }
+        if (isset($config['locales'][$lang])) $locale = $config['locales'][$lang];
     }
     putenv('LC_ALL=' . $locale);
     setlocale(LC_ALL, $locale);
@@ -109,42 +94,42 @@ $app->get('/{lang}', function($lang) use($app)
     return $app->redirect("/$lang/stones");
 });
 
-$app->get('/{lang}/stones', function($lang) use($app)
+$app->get('/{lang}/stones', function($lang) use($app, $stonesReader)
 {
     setcookie('stones_or_places', 'stones');
-    return $app['twig']->render('stones.twig', array('navactive' => 'stones', 'stones' => getStones()));
+    return $app['twig']->render('stones.twig', array('navactive' => 'stones', 'stones' => $stonesReader->getStones()));
 });
 
-$app->get('/{lang}/stones/list', function($lang) use($app)
+$app->get('/{lang}/stones/list', function($lang) use($app, $stonesReader)
 {
     setcookie('stones_or_places', 'stones');
-    return $app['twig']->render('stones-list.twig', array('navactive' => 'stones', 'stones' => getStones()));
+    return $app['twig']->render('stones-list.twig', array('navactive' => 'stones', 'stones' => $stonesReader->getStones()));
 });
 
-$app->get('/{lang}/places', function($lang) use($app)
+$app->get('/{lang}/places', function($lang) use($app, $stonesReader)
 {
     setcookie('stones_or_places', 'places');
-    return $app['twig']->render('places.twig', array('navactive' => 'places', 'stones' => getStones()));
+    return $app['twig']->render('places.twig', array('navactive' => 'places', 'stones' => $stonesReader->getStones()));
 });
 
-$app->get('/{lang}/coordinates', function($lang) use($app)
+$app->get('/{lang}/coordinates', function($lang) use($app, $stonesReader)
 {
-    return $app['twig']->render('coordinates.twig', array('navactive' => 'coordinates', 'stones' => getStones()));
+    return $app['twig']->render('coordinates.twig', array('navactive' => 'coordinates', 'stones' => $stonesReader->getStones()));
 });
 
-$app->get('/{lang}/stone/{id}', function($lang, $id) use($app)
+$app->get('/{lang}/stone/{id}', function($lang, $id) use($app, $stonesReader)
 {
-    return $app['twig']->render('stone.twig', array('navactive' => 'stones', 'stone' => getStone($id)));
+    return $app['twig']->render('stone.twig', array('navactive' => 'stones', 'stone' => $stonesReader->getStone($id)));
 });
 
-$app->get('/{lang}/stone/{id}/place', function($lang, $id) use($app)
+$app->get('/{lang}/stone/{id}/place', function($lang, $id) use($app, $stonesReader)
 {
-    return $app['twig']->render('place.twig', array('navactive' => 'places', 'stone' => getStone($id)));
+    return $app['twig']->render('place.twig', array('navactive' => 'places', 'stone' => $stonesReader->getStone($id)));
 });
 
-$app->get('/{lang}/stone/{id}/coordinates', function($lang, $id) use($app)
+$app->get('/{lang}/stone/{id}/coordinates', function($lang, $id) use($app, $stonesReader)
 {
-    return $app['twig']->render('coordinate.twig', array('navactive' => 'coordinates', 'stone' => getStone($id)));
+    return $app['twig']->render('coordinate.twig', array('navactive' => 'coordinates', 'stone' => $stonesReader->getStone($id)));
 });
 
 $app->get('/{lang}/contact', function($lang) use($app)
@@ -164,22 +149,21 @@ $app->get('/{lang}/participate', function($lang) use($app)
 
 $app->post('/{lang}/participate', function($lang) use($app)
 {
-
     $body = '';
-    foreach(array('name', 'email', 'url', 'lat', 'lng', 'street', 'zip', 'city', 'country') as $k)  {
+    foreach (array('name', 'email', 'url', 'lat', 'lng', 'street', 'zip', 'city', 'country') as $k) {
         $body .= $k . ': ' . $app['request']->get($k) . PHP_EOL;
     }
 
     try {
         $message = \Swift_Message::newInstance()
             ->setSubject('[Nowhere] Neuer Stein')
-	    ->setFrom(array('hello@project-nowhere.com'))
-            ->setTo(array('hello@project-nowhere.com', 'm@tacker.org'))
+            ->setFrom(array($app['config']['mail_from']))
+            ->setTo($app['config']['mail_from'])
             ->setBody($body)
             ->attach(\Swift_Attachment::fromPath($app['request']->files->get('photo')->getPathname(), $app['request']->files->get('photo')->getMimeType()));
 
         $app['mailer']->send($message);
-    } catch(\Swift_TransportException $e) {
+    } catch (\Swift_TransportException $e) {
         $app->abort(500, 'Could not send mail: ' . $e->getMessage());
     }
 

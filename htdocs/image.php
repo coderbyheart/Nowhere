@@ -1,5 +1,36 @@
 <?php
 
+// +----------------------------------------------------+
+// | The Project Nowhere website is free software:      |
+// | you can redistribute it and/or modify it under     |
+// | the terms of the GNU General Public License as     |
+// | published by the Free Software Foundation,         |
+// | either version 3 of the License, or (at your       |
+// | option) any later version.                         |
+// |                                                    |
+// | In addition you are required to retain all         |
+// | author attributions provided in this software      |
+// | and attribute all modifications made by you        |
+// | clearly and in an appropriate way.                 |
+// |                                                    |
+// | This software is distributed in the hope that      |
+// | it will be useful, but WITHOUT ANY WARRANTY;       |
+// | without even the implied warranty of               |
+// | MERCHANTABILITY or FITNESS FOR A PARTICULAR        |
+// | PURPOSE.  See the GNU General Public License for   |
+// | more details.                                      |
+// |                                                    |
+// | You should have received a copy of the GNU         |
+// | General Public License along with this software.   |
+// | If not, see <http://www.gnu.org/licenses/>.        |
+// +----------------------------------------------------+
+
+/**
+ * This simple script renders text images
+ *
+ * @author Markus Tacker <m@coderbyheart.de>
+ */
+
 error_reporting(-1);
 ini_set('display_errors', 1);
 
@@ -69,7 +100,7 @@ $config['button']['size'] = 22;
 $class = (isset($_GET['class'])) ? $_GET['class'] : 'menu';
 
 if (!isset($config[$class])) {
-    header("HTTP/1.0 Not found", true, 404);
+    header("HTTP/1.0 404 Not found", true, 404);
     echo "Invalid class: " . $class;
     return;
 }
@@ -79,7 +110,7 @@ $target = sprintf('assets/textimg/%s.png', md5($class . '-' . $text));
 
 if (is_file($target)) {
     header('Content-Type: image/png');
-    echo file_get_contents($target);
+    readfile($target);
     return;
 }
 
@@ -113,5 +144,5 @@ if ($return != 0) {
 }
 
 header('Content-Type: image/png');
-echo file_get_contents($target);
+readfile($target);
 
