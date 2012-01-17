@@ -82,6 +82,7 @@ $app->before(function () use ($app, $config)
     textdomain('nowhere');
     $app['twig']->addGlobal('lang', $lang);
     $app['twig']->addGlobal('langswitchlink', preg_replace('%^/' . $lang . '/%', '/' . ($lang === 'en' ? 'de' : 'en') . '/', $app['request']->getPathInfo()));
+    $app['twig']->addGlobal('contactmail', $config['mail_from']);
 });
 
 $app->get('/', function() use($app)
@@ -92,60 +93,60 @@ $app->get('/', function() use($app)
 $app->get('/{lang}', function($lang) use($app)
 {
     return $app->redirect("/$lang/stones");
-});
+})->assert('lang', '[a-z]{2}');
 
 $app->get('/{lang}/stones', function($lang) use($app, $stonesReader)
 {
-    setcookie('stones_or_places', 'stones');
+    setcookie('lastloc', '/' . $lang . '/stones', 0, '/');
     return $app['twig']->render('stones.twig', array('navactive' => 'stones', 'stones' => $stonesReader->getStones()));
-});
+})->assert('lang', '[a-z]{2}');
 
 $app->get('/{lang}/stones/list', function($lang) use($app, $stonesReader)
 {
-    setcookie('stones_or_places', 'stones');
+    setcookie('lastloc', '/' . $lang . '/stones/list', 0, '/');
     return $app['twig']->render('stones-list.twig', array('navactive' => 'stones', 'stones' => $stonesReader->getStones()));
-});
+})->assert('lang', '[a-z]{2}');
 
 $app->get('/{lang}/places', function($lang) use($app, $stonesReader)
 {
-    setcookie('stones_or_places', 'places');
+    setcookie('lastloc', '/' . $lang . '/places', 0, '/');
     return $app['twig']->render('places.twig', array('navactive' => 'places', 'stones' => $stonesReader->getStones()));
-});
+})->assert('lang', '[a-z]{2}');
 
 $app->get('/{lang}/coordinates', function($lang) use($app, $stonesReader)
 {
     return $app['twig']->render('coordinates.twig', array('navactive' => 'coordinates', 'stones' => $stonesReader->getStones()));
-});
+})->assert('lang', '[a-z]{2}');
 
 $app->get('/{lang}/stone/{id}', function($lang, $id) use($app, $stonesReader)
 {
     return $app['twig']->render('stone.twig', array('navactive' => 'stones', 'stone' => $stonesReader->getStone($id)));
-});
+})->assert('lang', '[a-z]{2}');
 
 $app->get('/{lang}/stone/{id}/place', function($lang, $id) use($app, $stonesReader)
 {
     return $app['twig']->render('place.twig', array('navactive' => 'places', 'stone' => $stonesReader->getStone($id)));
-});
+})->assert('lang', '[a-z]{2}');
 
 $app->get('/{lang}/stone/{id}/coordinates', function($lang, $id) use($app, $stonesReader)
 {
     return $app['twig']->render('coordinate.twig', array('navactive' => 'coordinates', 'stone' => $stonesReader->getStone($id)));
-});
+})->assert('lang', '[a-z]{2}');
 
 $app->get('/{lang}/contact', function($lang) use($app)
 {
     return $app['twig']->render('contact.twig', array('navactive' => 'contact'));
-});
+})->assert('lang', '[a-z]{2}');
 
 $app->get('/{lang}/about', function($lang) use($app)
 {
     return $app['twig']->render('about.twig', array('navactive' => 'about'));
-});
+})->assert('lang', '[a-z]{2}');
 
 $app->get('/{lang}/participate', function($lang) use($app)
 {
     return $app['twig']->render('participate.twig', array('navactive' => 'participate'));
-});
+})->assert('lang', '[a-z]{2}');
 
 $app->post('/{lang}/participate', function($lang) use($app)
 {
@@ -158,7 +159,7 @@ $app->post('/{lang}/participate', function($lang) use($app)
         $message = \Swift_Message::newInstance()
             ->setSubject('[Nowhere] Neuer Stein')
             ->setFrom(array($app['config']['mail_from']))
-            ->setTo($app['config']['mail_from'])
+            ->setTo($app['config']['mail_to'])
             ->setBody($body)
             ->attach(\Swift_Attachment::fromPath($app['request']->files->get('photo')->getPathname(), $app['request']->files->get('photo')->getMimeType()));
 
@@ -168,7 +169,7 @@ $app->post('/{lang}/participate', function($lang) use($app)
     }
 
     return $app['twig']->render('participate-ok.twig', array('navactive' => 'participate'));
-});
+})->assert('lang', '[a-z]{2}');
 
 $app->get('/{lang}/news', function($lang) use($app)
 {
@@ -181,6 +182,6 @@ $app->get('/{lang}/news', function($lang) use($app)
         $media[$parts[3]][] = $imgPath;
     }
     return $app['twig']->render('news.twig', array('navactive' => 'news', 'media' => $media));
-});
+})->assert('lang', '[a-z]{2}');
 
 $app->run();

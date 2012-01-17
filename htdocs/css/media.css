@@ -24,7 +24,7 @@
     #stone a.coordinates { font-size: 2em;}
     .desktop { display: block; }
     .mobile { display: none; }
-    article { font-size: 1.5em; margin: 5% auto 5% auto; max-width: 600px; width: 75%; }
+    article { font-size: 1.5em; margin: 1.7% auto 5% auto; max-width: 600px; width: 75%; }
     article h1 { display: block; }
 }
 

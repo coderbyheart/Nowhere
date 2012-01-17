@@ -1,5 +1,5 @@
 msgid "About"
-msgstr "Über"
+msgstr "Info"
 
 msgid "Grid view"
 msgstr "Gitteransicht"
@@ -8,7 +8,7 @@ msgid "List view"
 msgstr "Listenansicht"
 
 msgid "Participate"
-msgstr "Mitmachen"
+msgstr "Teilnahme"
 
 msgid "News"
 msgstr "Neues"

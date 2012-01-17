@@ -42,18 +42,16 @@ jQuery(function ($) {
     $(document).ready(positionStone);
     $(window).resize(positionStone);
     $('.link-home').click(function (ev) {
-        document.location = $('a[rel=bookmark]').prop('href');
+        window.location.pathname = $('a[rel=bookmark]').prop('href');
     });
     $('.link-stones-or-places').click(function (ev) {
-        if ($.cookie('stones_or_places') == 'places') {
-            document.location = $('#placeslink').prop('href');
-        } else {
-            document.location = $('a[rel=bookmark]').prop('href');
+        if ($.cookie('lastloc') != null) {
+            window.location.pathname = $.cookie('lastloc');
         }
     });
     $('a.external').click(function (ev) {
         ev.preventDefault();
-        window.open($(ev.target).parents('a').prop('href'));
+        window.open($(ev.target).closest('a').prop('href'));
         return false;
     });
 });

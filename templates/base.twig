@@ -46,7 +46,7 @@
 <nav id="mobilenav" class="mobile">
     <ul>
         <li><a href="/" rel="bookmark" class="hover textimage {% if navactive == "stones" %}textimage-nav-active{% else %}textimage-nav{% endif %}">{% trans %}Stones{% endtrans %}</a></li>
-        <li><a href="/{{ lang }}/places" id="placeslink" class="hover textimage {% if navactive == "places" %}textimage-nav-active{% else %}textimage-nav{% endif %}">{% trans %}Places{% endtrans %}</a></li>
+        <li><a href="/{{ lang }}/places" class="hover textimage {% if navactive == "places" %}textimage-nav-active{% else %}textimage-nav{% endif %}">{% trans %}Places{% endtrans %}</a></li>
         <li><a href="/{{ lang }}/about" class="hover textimage {% if navactive == "about" %}textimage-nav-active{% else %}textimage-nav{% endif %}">{% trans %}About{% endtrans %}</a></li>
         <li><a href="{{ langswitchlink }}" hreflang="{% if lang == "en" %}de-de{% else %}en-us{% endif %}">{% if lang == "en" %}DE{% else %}EN{% endif %}</a></li>
         <li><a href="/{{ lang }}/contact" class="hover textimage {% if navactive == "contact" %}textimage-nav-active{% else %}textimage-nav{% endif %}">{% trans %}Contact{% endtrans %}</a></li>
