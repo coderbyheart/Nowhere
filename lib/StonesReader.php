@@ -57,8 +57,8 @@ class StonesReader
     {
         if (empty($this->stones)) {
             $stonesKey = md5(__DIR__) . '.stones';
-            if (!apc_exists($stonesKey)) {
-                apc_store($stonesKey, array());
+            if (!apc_exists($stonesKey . '-ttl')) {
+                apc_store($stonesKey . '-ttl', '-', 3600);
                 $stones = array();
                 $fp = $this->fopen_utf8($this->cacheFile, 'r');
                 while ($stoneData = fgetcsv($fp)) {
