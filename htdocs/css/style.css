@@ -90,7 +90,7 @@ nav li { float: left; }
 .news .date { color: #000; }
 .news .date:before { content: "— "; color: #eb6c5f; margin-left: -1.4em; }
 .news .media { text-align: center; }
-.news .media img { max-width: 300px; width: 100%; }
+.news .media img { max-width: 400px; width: 100%; margin-bottom: 50px; }
 
 form { font-size: 0.875em; }
 form p { margin-bottom: 0.25em; }
