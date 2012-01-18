@@ -115,16 +115,15 @@ $app->get('/{lang}/stones/list', function($lang) use($app, $stonesReader)
                 $sort[] = $stone->getNumber();
                 break;
             case 'country':
+            case 'coordinates':
                 $sort[] = $stone->getCountry();
                 break;
             case 'city':
                 $sort[] = $stone->getLocality();
                 break;
             case 'name':
-                $sort[] = $stone->getPerson();
-                break;
-            case 'coordinates':
-                $sort[] = $stone->getLat();
+		$parts = explode(' ', $stone->getPerson());
+                $sort[] = isset($parts[1]) ? $parts[1] : $stone->getPerson();
                 break;
         }
     }
