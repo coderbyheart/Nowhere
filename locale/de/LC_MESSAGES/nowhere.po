@@ -46,6 +46,9 @@ msgstr "Gehe zu %locality% in %country% wo %person% diesen Stein gefunden hat."
 msgid "Stone found by %person% in %locality%, %country%."
 msgstr "Stein gefunden von %person% in %locality%, %country%."
 
+msgid "Stone found by %person%."
+msgstr "Stein gefunden von %person%."
+
 msgid "No."
 msgstr "Nr."
 
