@@ -48,7 +48,6 @@ Twig_Extensions_Autoloader::register();
 $stonesReader = new StonesReader($config['stonesCSVFile']);
 
 $app = new Silex\Application();
-$app['debug'] = true;
 
 $app->register(new Silex\Provider\SymfonyBridgesServiceProvider(), array(
     'symfony_bridges.class_path' => __DIR__ . '/../vendor/symfony/src',
@@ -186,9 +185,10 @@ $app->post('/{lang}/participate', function($lang) use($app)
             ->setSubject('[Nowhere] Neuer Stein')
             ->setFrom(array($app['config']['mail_from']))
             ->setTo($app['config']['mail_to'])
-            ->setBody($body)
-            ->attach(\Swift_Attachment::fromPath($app['request']->files->get('photo')->getPathname(), $app['request']->files->get('photo')->getMimeType()));
-
+            ->setBody($body);
+        if ($app['request']->files->get('photo')) {
+            $message->attach(\Swift_Attachment::fromPath($app['request']->files->get('photo')->getPathname(), $app['request']->files->get('photo')->getMimeType()));
+        }
         $app['mailer']->send($message);
     } catch (\Swift_TransportException $e) {
         $app->abort(500, 'Could not send mail: ' . $e->getMessage());

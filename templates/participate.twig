@@ -3,13 +3,13 @@
 <article>
     <form method="POST" action="" enctype="multipart/form-data">
         <p>
-            <label class="textimage" for="name">{% trans %}Name{% endtrans %}</label><br/>
+            <label class="textimage" for="name">{% trans %}Name{% endtrans %}</label>
             <input type="text" name="name" id="name" placeholder="{% trans %}John Doe{% endtrans %}"
                    required="required"/>
         </p>
 
         <p>
-            <label class="textimage" for="email">{% trans %}E-mail{% endtrans %}</label><br/>
+            <label class="textimage" for="email">{% trans %}E-mail{% endtrans %}</label>
             <input type="email" name="email" id="email" placeholder="{% trans %}john.doe@example.com{% endtrans %}"
                    required="required"/>
         </p>
@@ -17,13 +17,8 @@
         <p>
             <label for="url"><span class="textimage textimage-label">{% trans %}URL{% endtrans %}</span>
                 <small class="textimage textimage-label-small">{% trans %}(optional){% endtrans %}</small>
-            </label><br/>
+            </label>
             <input type="url" name="url" id="url" placeholder="{% trans %}http://example.com/{% endtrans %}"/>
-        </p>
-
-        <p>
-            <label class="textimage" for="photo">{% trans %}Photography{% endtrans %}</label><br/>
-            <input type="file" name="photo" id="photo" required="required"/>
         </p>
 
         <fieldset>
@@ -43,25 +38,38 @@
         </fieldset>
 
         <p>
-            <label class="textimage" for="street">{% trans %}Street{% endtrans %}</label><br/>
+            <label class="textimage" for="street">{% trans %}Street{% endtrans %}</label>
             <input type="text" name="street" id="street" placeholder="Vergissmeinnichtweg 15" required="required"/>
         </p>
 
         <p>
-            <label class="textimage" for="zip">{% trans %}ZIP-code{% endtrans %}</label><br/>
+            <label class="textimage" for="zip">{% trans %}ZIP-code{% endtrans %}</label>
             <input name="zip" id="zip" placeholder="65201" pattern="[0-9]+" required="required"/>
         </p>
 
         <p>
-            <label class="textimage" for="city">{% trans %}City{% endtrans %}</label><br/>
+            <label class="textimage" for="city">{% trans %}City{% endtrans %}</label>
             <input type="text" name="city" id="city" placeholder="Wiesbaden" required="required"/>
         </p>
 
         <p>
-            <label class="textimage" for="country">{% trans %}Country{% endtrans %}</label><br/>
+            <label class="textimage" for="country">{% trans %}Country{% endtrans %}</label>
             <input type="text" name="country" id="country" placeholder="Germany" required="required"/>
         </p>
 
+        {#
+        
+        Removed cause the Non-Ajax-Version is too ugly.
+
+        <p>
+            <label class="textimage" for="photo">{% trans %}Photography{% endtrans %}</label>
+            <input type="file" name="photo" id="photo" required="required"/>
+        </p>
+
+        #}
+
+        <p><small>Please send your photograph to: <a href="mailto:{{ contactmail }}">{{ contactmail }}</a>.</small></p>
+        
         <p class="right">
             <button type="submit"><span class="textimage textimage-button">{% trans %}submit{% endtrans %}</span>
             </button>

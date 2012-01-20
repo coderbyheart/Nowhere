@@ -23,6 +23,7 @@ h2 a.active { color: #eb6c5f; }
 .hover .imagetext.over { display: none; }
 .hover:hover .imagetext.over { display: inline-block; }
 .hover:hover .imagetext.normal { display: none; }
+small { font-size: 0.5em; }
 
 article { color: #445c98; font-weight: bold; }
 article h1 { font-size: 1em; text-align: center; }
@@ -93,10 +94,12 @@ nav li { float: left; }
 .news .media img { max-width: 400px; width: 100%; margin-bottom: 50px; }
 
 form { font-size: 0.875em; }
-form p { margin-bottom: 0.25em; }
+form p { margin-bottom: 0.25em; min-height: 1em; }
 input { border: 0; border-bottom: 0.2em solid #fff; background-color: transparent; width: 100%; }
 input:focus { border-bottom: 0.25em solid #000; }
 button { border: 0.25em solid #fff; background: transparent; color: #fff; }
+form label { display: inline-block; width: 25%; float: left; clear: left; }
+form input { width: 75%; float: left; clear: right; }
 
 fieldset { border: 0; padding: 0; margin: 0; }
 fieldset p.label { width: 30%; float: left; overflow: hidden; }
