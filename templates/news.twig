@@ -2,45 +2,82 @@
 {% from 'macros.twig' import newsmedia %}
 {% block body %}
 <article lang="en-us">
-    <header>
-        <h1 class="textimage">Nowhere</h1>
-    </header>
-    <section class="news"><p><span class="date">12-05-02</span> We are busy preparing the exhibition. At the Werkschau
-        Wiesbaden we will present project Nowhere. The exhibition takes place from 9.–10.2. and the vernissage starts on
-        thursday at  6 pm. Drop by and celebrate with us!</p>
+    <section class="news">
+        <!--
+
+            Webfonts were not an option. That hurts.
+            Technical background: The text rendering technique used
+            is far from perfect and fails when dealing with multiline texts.
+
+        -->
+        <p class="{% if not textonly %}hidden{% endif %}"><span class="date">12-05-02</span>
+            We are busy preparing the
+            exhibition. At the Werkschau
+            Wiesbaden we will present project Nowhere. The exhibition takes place from 9.–10.2. and the vernissage
+            starts on
+            thursday at  6 pm. Drop by and celebrate with us!</p>
         {{ newsmedia(media, '12-05-02') }}
     </section>
-    <section class="news"><p><span class="date">11-12-12</span> The book »Nowhere« is printed! Take a look.</p>
+    <section class="news"><p class="{% if not textonly %}hidden{% endif %}"><span class="date">11-12-12</span>
+        The book
+        »Nowhere« is printed! Take a look.</p>
         {{ newsmedia(media, '11-12-12') }}</section>
-    <section class="news"><p><span class="date">11-12-07</span> Finally! The book and the exhibition catalog is in
-        production. Exciting!</p>{{ newsmedia(media, '11-12-07') }}</section>
-    <section class="news"><p><span class="date">11-11-23</span> Behind the scenes: the shootings in Berlin and
+    <section class="news"><p class="{% if not textonly %}hidden{% endif %}"><span class="date">11-12-07</span>
+        Finally!
+        The book and the exhibition catalog is in
+        production. Exciting!</p>
+        {{ newsmedia(media, '11-12-07') }}</section>
+    <section class="news"><p class="{% if not textonly %}hidden{% endif %}"><span class="date">11-11-23</span>
+        Behind
+        the scenes: the shootings in Berlin and
         Wiesbaden.</p>
         {{ newsmedia(media, '11-11-23') }}</section>
-    <section class="news"><p><span class="date">11-11-09</span> Sorting the stones in order.
-    </p>{{ newsmedia(media, '11-11-09') }}</section>
-    <section class="news"><p><span class="date">11-11-05</span> The Customs Office has been very busy… Result: You
+    <section class="news"><p class="{% if not textonly %}hidden{% endif %}"><span class="date">11-11-09</span>
+        Sorting
+        the stones in order.
+    </p>
+        {{ newsmedia(media, '11-11-09') }}</section>
+    <section class="news"><p class="{% if not textonly %}hidden{% endif %}"><span class="date">11-11-05</span>
+        The
+        Customs Office has been very busy… Result: You
         are awesome!</p>
         {{ newsmedia(media, '11-11-05') }}</section>
-    <section class="news"><p><span class="date">11-11-01</span> Back in our studio. Difficult decisions to make...</p>
+    <section class="news"><p class="{% if not textonly %}hidden{% endif %}"><span class="date">11-11-01</span>
+        Back in
+        our studio. Difficult decisions to make...</p>
         {{ newsmedia(media, '11-11-01') }}</section>
-    <section class="news"><p><span class="date">11-10-21</span> We are in Berlin taking nice pictures of people and
+    <section class="news"><p class="{% if not textonly %}hidden{% endif %}"><span class="date">11-10-21</span>
+        We are in
+        Berlin taking nice pictures of people and
         landscapes :)</p>
         {{ newsmedia(media, '11-10-21') }}</section>
-    <section class="news"><p><span class="date">11-10-15</span> Just a short reminder: the deadline for the next project
+    <section class="news"><p class="{% if not textonly %}hidden{% endif %}"><span class="date">11-10-15</span>
+        Just a
+        short reminder: the deadline for the next project
         nowhere
-        exhibition is 2011-10-15</p>{{ newsmedia(media, '11-10-15') }}</section>
-    <section class="news"><p><span class="date">11-10-05</span> We are planning an exhibition in Wiesbaden in feburary.
+        exhibition is 2011-10-15</p>
+        {{ newsmedia(media, '11-10-15') }}</section>
+    <section class="news"><p class="{% if not textonly %}hidden{% endif %}"><span class="date">11-10-05</span>
+        We are
+        planning an exhibition in Wiesbaden in feburary.
         Stay tuned.
     </p>{{ newsmedia(media, '11-10-05') }}</section>
-    <section class="news"><p><span class="date">11-09-26</span> We are receiving the first stones from Japan, USA,
+    <section class="news"><p class="{% if not textonly %}hidden{% endif %}"><span class="date">11-09-26</span>
+        We are
+        receiving the first stones from Japan, USA,
         Ireland, France,
-        Germany, United Kingdom and Mongolia. Thank you all!</p>{{ newsmedia(media, '11-09-26') }}</section>
-    <section class="news"><p><span class="date">11-09-19</span> Please participate in the project Nowhere! For taking
+        Germany, United Kingdom and Mongolia. Thank you all!</p>
+        {{ newsmedia(media, '11-09-26') }}</section>
+    <section class="news"><p class="{% if not textonly %}hidden{% endif %}"><span class="date">11-09-19</span>
+        Please
+        participate in the project Nowhere! For taking
         part in the
         project click here.</p>{{ newsmedia(media, '11-09-19') }}</section>
-    <section class="news"><p><span class="date">11-09-13</span> We moved in our new Studio. Hooray! Already got some
+    <section class="news"><p class="{% if not textonly %}hidden{% endif %}"><span class="date">11-09-13</span>
+        We moved
+        in our new Studio. Hooray! Already got some
         nice things on
-        our wall.</p>{{ newsmedia(media, '11-09-13') }}</section>
+        our wall.</p>
+        {{ newsmedia(media, '11-09-13') }}</section>
 </article>
 {% endblock %}

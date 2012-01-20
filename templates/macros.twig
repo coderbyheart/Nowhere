@@ -7,6 +7,9 @@
 {% endmacro %}
 
 {% macro newsmedia(media, date) %}
+{% if not textonly %}
+<p><img src="/assets/rendered/news/{{ date }}.png" alt="" longdesc="?textonly=1" /></p>
+{% endif %}
 {% if media[date] is defined %}
 {% for img in media[date] %}
 {% if loop.first %}

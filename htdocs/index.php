@@ -83,6 +83,7 @@ $app->before(function () use ($app, $config)
     $app['twig']->addGlobal('lang', $lang);
     $app['twig']->addGlobal('langswitchlink', preg_replace('%^/' . $lang . '/%', '/' . ($lang === 'en' ? 'de' : 'en') . '/', $app['request']->getPathInfo()));
     $app['twig']->addGlobal('contactmail', $config['mail_from']);
+    $app['twig']->addGlobal('textonly', $app['request']->get('textonly', false));
 });
 
 $app->get('/', function() use($app)

@@ -1,37 +1,62 @@
 {% extends "base.twig" %}
 {% block body %}
 <article>
-    <header>
-        <h1 class="textimage">Nowhere</h1>
-    </header>
-    <p>
-        Project Nowhere<br/>
-        Vergissmeinnichtweg 15<br/>
-        65201 Wiesbaden
-    </p>
+    {% if not textonly %}
+    <!--
 
-    <p>+49 (0) 179 5358846</p>
+    Uhh, THAT really hurts. But you know, Designers.
+    Technical background: The text rendering technique used
+    is far from perfect and fails when dealing with multiline texts.
+    Webfonts were not an option. That hurts, too.
 
-    <p>
-        <a href="mailto:{{ contactmail }}">{{ contactmail }}</a>
-    </p>
+    -->
+    <map id="contactmap" name="contactmap">
+        <area shape="rect" alt="{{ contactmail }}" coords="0,198,414,223" href="mailto:{{ contactmail }}"/>
+        <area shape="rect" alt="Anna Meyer" coords="246,261,406,289" href="http://www.sayhellotoanna.com/"
+              target="_blank"/>
+        <area shape="rect" alt="Markus Tacker" coords="196,294,388,321" href="http://coderbyheart.de/" target="_blank"/>
+        <area shape="rect" alt="GitHub" coords="38,618,136,647" href="https://github.com/tacker/Nowhere"
+              target="_blank"/>
+    </map>
+    <img src="/assets/rendered/contact.png" usemap="contactmap" longdesc="?textonly=1"/>
+    {% endif %}
 
-    <p>
-        Concept &amp; Design: <a href="http://www.sayhellotoanna.com/" class="external">Anna Meyer</a><br/>
-        Programming: <a href="http://coderbyheart.de/" class="external">Markus Tacker</a>
-    </p>
+    {% if not textonly %}
+    <div class="hidden">
+        {% endif %}
+        <p>
+            Project Nowhere<br/>
+            Vergissmeinnichtweg 15<br/>
+            65201 Wiesbaden
+        </p>
 
-    <p>
-        All rights reserved. All material on this pages is copyrighted, its usage or reproduction requires exclusive
-        written permission. We do not take any responsibility regarding infos and content displayed on external linked
-        websites.
-    </p>
-    
-    <p>
-        The source code for this project is available on <a href="https://github.com/tacker/Nowhere" class="external">GitHub</a>.
-    </p>
-    <footer>
-        <p>© 2012 Anna Meyer</p>
-    </footer>
+        <p>+49 (0) 179 5358846</p>
+
+        <p>
+            <a href="mailto:{{ contactmail }}">{{ contactmail }}</a>
+        </p>
+
+        <p>
+            Concept &amp; Design: <a href="http://www.sayhellotoanna.com/" class="external">Anna Meyer</a><br/>
+            Programming: <a href="http://coderbyheart.de/" class="external">Markus Tacker</a>
+        </p>
+
+        <p>
+            All rights reserved. All material on this pages is copyrighted, its usage or reproduction requires exclusive
+            written permission. We do not take any responsibility regarding infos and content displayed on external
+            linked
+            websites.
+        </p>
+
+        <p>
+            The source code for this project is available on <a href="https://github.com/tacker/Nowhere"
+                                                                class="external">GitHub</a>.
+        </p>
+        <footer>
+            <p>© 2012 Anna Meyer</p>
+        </footer>
+        {% if not textonly %}
+    </div>
+    {% endif %}
 </article>
 {% endblock %}
