@@ -106,3 +106,5 @@ fieldset p.label { width: 30%; float: left; overflow: hidden; }
 p.coord { width: 35%; float: left; overflow: hidden; }
 p.coord label { width: 40%; float: left; }
 p.coord input { width: 60%; float: left; }
+
+#tooltip { position: absolute; background: transparent url(../img/tooltip-bg.png); color: white; font-size: 0.75em; padding: 0.25em 0.5em; display: none; border-radius: 5px; z-index: 200; text-shadow: black 0px 0px 2px; }

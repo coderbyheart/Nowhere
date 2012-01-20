@@ -38,16 +38,16 @@ msgid "Go to the coordinates in %locality%, %country% where %person% found this 
 msgstr "Gehe zu den Koordinaten in %locality%, %country% wo %person% diesen Stein gefunden hat."
 
 msgid "%locality% in %country% where %person% found a stone."
-msgstr "%locality% in %country% wo %person% einen Stein gefunden hat"
+msgstr "%locality% in %country% wo %person% einen Stein gefunden hat."
 
-msgid "Got to %locality% in %country% where %person% found this stone."
+msgid "Go to %locality% in %country% where %person% found this stone."
 msgstr "Gehe zu %locality% in %country% wo %person% diesen Stein gefunden hat."
 
 msgid "Stone found by %person% in %locality%, %country%."
 msgstr "Stein gefunden von %person% in %locality%, %country%."
 
-msgid "Stone found by %person%."
-msgstr "Stein gefunden von %person%."
+msgid "Stone found by %person%"
+msgstr "Stein gefunden von %person%"
 
 msgid "No."
 msgstr "Nr."

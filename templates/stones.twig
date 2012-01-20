@@ -10,10 +10,10 @@
         {% set country = stone.country %}
         <li>
             <a href="/{{ lang }}/stone/{{ stone.number }}"
-               title="{% trans %}Stone found by {{ person }}.{% endtrans %}"
+               title="{% trans %}Stone found by {{ person }}{% endtrans %}"
                     ><img
                     src="/media/stones/{{ stone.number }}-stone-150.png"
-                    alt="{% trans %}Stone found by {{ person }}.{% endtrans %}"
+                    alt="{% trans %}Stone found by {{ person }}{% endtrans %}"
                     /></a>
         </li>
         {% if loop.last %}
