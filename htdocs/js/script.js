@@ -26,6 +26,7 @@ var positionStone = function () {
                 'margin-left':'0',
                 'margin-top':((wheight - theHeight) / 2) + 'px'
             });
+            if (!istouch && stoneImg.hasClass('draggable'))  stoneImg.draggable({'axis': 'y'});
         } else if (wr2 <= ir2) {
             var theWidth = (wheight / iheight) * iwidth;
             stoneImg.css({
@@ -34,6 +35,7 @@ var positionStone = function () {
                 'margin-top':'0',
                 'margin-left':((wwidth - theWidth) / 2) + 'px'
             });
+            if (!istouch && stoneImg.hasClass('draggable'))  stoneImg.draggable({'axis': 'x'});
         }
     }
 };
