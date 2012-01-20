@@ -5,7 +5,7 @@
  */
 
 $config = array(
-    'mail_from' => 'hello@project-nowhere.com',
+    'mail_from' => 'nowhere@sayhellotoanna.com',
     'mail_top' => array('hello@project-nowhere.com', 'm@tacker.org'),
     'locales' => array('de' => 'de_DE.utf8', 'en' => 'en_US.utf8'),
     'default_locale' => 'de_DE.utf8',
