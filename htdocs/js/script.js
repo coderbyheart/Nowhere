@@ -102,18 +102,20 @@ jQuery(function ($) {
         window.open($(ev.target).closest('a').prop('href'));
         return false;
     });
-    // Tooltips
-    tooltip = $('#tooltip');
-    $('a').each(function (idx, el) {
-        var a = $(el);
-        var title = a.prop("title");
-        if (!title.length) return;
-        a.data("title", title);
-        a.prop("title", "");
-        a.addClass("tooltip");
-    });
+    if(!istouch) {
+	    // Tooltips
+	    tooltip = $('#tooltip');
+	    $('a').each(function (idx, el) {
+		var a = $(el);
+		var title = a.prop("title");
+		if (!title.length) return;
+		a.data("title", title);
+		a.prop("title", "");
+		a.addClass("tooltip");
+	    });
 
-    $('a.tooltip').mousemove(setXY);
-    $('a.tooltip').mouseenter(startTooltipTimer);
-    $('a.tooltip').mouseleave(hideTooltip);
+	    $('a.tooltip').mousemove(setXY);
+	    $('a.tooltip').mouseenter(startTooltipTimer);
+	    $('a.tooltip').mouseleave(hideTooltip);
+    }
 });
