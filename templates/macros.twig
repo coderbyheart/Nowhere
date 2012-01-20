@@ -1,11 +1,3 @@
-{% macro coordlink(lang, navactive) %}
-<aside id="bottom" class="desktop">
-    <h2><a href="/{{ lang }}/coordinates"
-           class="hover textimage {% if navactive == "coordinates" %}textimage-h2-active{% else %}textimage-h2{% endif %}">{% trans %}Coordinates{% endtrans %}</a>
-    </h2>
-</aside>
-{% endmacro %}
-
 {% macro newsmedia(media, date) %}
 {% if not textonly %}
 <p><img src="/assets/rendered/news/{{ date }}.png" alt="" longdesc="?textonly=1" /></p>

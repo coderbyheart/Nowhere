@@ -3,9 +3,6 @@
 {% set country = stone.country %}
 {% set person = stone.person %}
 {% block body %}
-<header id="master" class="desktop">
-    <h1 class="textimage">Nowhere</h1>
-</header>
 <div id="main">
     <div id="stone">
         <a href="/{{ lang }}/stone/{{ stone.number }}/place"
@@ -15,6 +12,4 @@
         </a>
     </div>
 </div>
-{% from 'macros.twig' import coordlink %}
-{{ coordlink(lang, navactive) }}
 {% endblock %}

@@ -3,9 +3,6 @@
 {% set country = stone.country %}
 {% set person = stone.person %}
 {% block body %}
-<header id="master" class="desktop">
-    <h1 class="textimage">Nowhere</h1>
-</header>
 <div id="main">
     <div id="stone">
         <div class="coordinates">
@@ -23,6 +20,4 @@
              width="{{ stone.width }}" height="{{ stone.height }}" class="resize"/>
     </div>
 </div>
-{% from 'macros.twig' import coordlink %}
-{{ coordlink(lang, navactive) }}
 {% endblock %}
