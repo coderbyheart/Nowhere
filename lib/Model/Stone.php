@@ -191,8 +191,8 @@ class Stone
      */
     protected function cleanCoord($coord)
     {
-        $coord = preg_replace('/[^+°0-9]/', '', $coord);
-        $coord = str_replace('°', '.', $coord);
+        $coord = str_replace("‘", "'", $coord);
+        $coord = preg_replace('/[^+°\'\.0-9]/', '', $coord);
         if ($coord[0] == '+') {
             $coord = substr($coord, 1);
         } else {
