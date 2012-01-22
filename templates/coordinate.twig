@@ -5,7 +5,7 @@
 {% block body %}
 <div id="main">
     <div id="stone">
-        <div class="coordinates">
+        <div class="coordinates notooltips">
             <div class="wrapper link link-stones-or-places">
                 <a href="http://maps.google.com/?ll={{ stone.latc }},{{ stone.lngc }}&amp;spn=0.1,0.1&amp;q={{ stone.latc }},{{ stone.lngc }}"
                    title="{% trans %}Show this place ({{ locality }} in {{ country }}) in Google Maps.{% endtrans %}"

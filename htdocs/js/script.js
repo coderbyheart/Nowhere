@@ -54,9 +54,11 @@ var startTooltipTimer = function (ev) {
 
 var setXY = function(ev)
 {
+    var xdiff = Math.abs(tooltipX - ev.pageX);
+    var ydiff = Math.abs(tooltipY - ev.pageY);
     tooltipX = ev.pageX;
     tooltipY = ev.pageY;
-    if (tooltipShowing) {
+    if (tooltipShowing && (xdiff > 4 || ydiff > 4)) {
         hideTooltip(ev);
         startTooltipTimer(ev);
     }
@@ -118,4 +120,5 @@ jQuery(function ($) {
 	    $('a.tooltip').mouseenter(startTooltipTimer);
 	    $('a.tooltip').mouseleave(hideTooltip);
     }
+    $('.notooltips a').prop('title', null);
 });

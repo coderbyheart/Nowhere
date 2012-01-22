@@ -4,7 +4,7 @@
 {% set person = stone.person %}
 {% block body %}
 <div id="main">
-    <div id="stone">
+    <div id="stone" class="notooltips">
         <a href="/{{ lang }}/stone/{{ stone.number }}/coordinates" title="{% trans %}Go to the coordinates in {{ locality }}, {{ country }} where {{ person }} found this stone.{% endtrans %}">
             <img src="/media/stones/{{ stone.number }}-place-2048.jpg" alt="{% trans %}{{ locality }} in {{ country }} where {{ person }} found this stone.{% endtrans %}" width="{{ stone.width }}" height="{{ stone.height }}" class="resize draggable" />
         </a>
