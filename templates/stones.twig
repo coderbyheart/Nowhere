@@ -3,7 +3,7 @@
 <div id="main">
     {% for stone in stones %}
     {% if loop.first %}
-    <ul id="stonesgrid" class="draggrid">
+    <ul id="stonesgrid" class="draggrid tooltips">
         {% endif %}
         {% set person = stone.person %}
         {% set locality = stone.locality %}

@@ -105,7 +105,7 @@ jQuery(function ($) {
     if(!istouch) {
 	    // Tooltips
 	    tooltip = $('#tooltip');
-	    $('a').each(function (idx, el) {
+	    $('.tooltips a').each(function (idx, el) {
 		var a = $(el);
 		var title = a.prop("title");
 		if (!title.length) return;
