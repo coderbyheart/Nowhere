@@ -10,9 +10,9 @@
         {% set person = stone.person %}
         <li>
             <a href="/{{ lang }}/stone/{{ stone.number }}"
-               title="{% trans %}{{ locality }} in {{ country }} where {{ person }} found a stone.{% endtrans %}"><img
+               title="{% trans %}This is where {{ person }} found a stone.{% endtrans %}"><img
                     src="/media/stones/{{ stone.number }}-place-150.jpg"
-                    alt="{% trans %}{{ locality }} in {{ country }} where {{ person }} found a stone.{% endtrans %}"
+                    alt="{% trans %}This is where {{ person }} found a stone.{% endtrans %}"
                     class="{% if stone.ar < 1 %}landscape{% else %}portrait{% endif %}"
                     /></a>
         </li>
