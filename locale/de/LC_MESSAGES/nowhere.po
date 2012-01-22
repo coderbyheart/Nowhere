@@ -99,3 +99,9 @@ msgstr "max.mustermann@beispiel.de"
 
 msgid "http://example.com/"
 msgstr "http://beispiel.de/"
+
+msgid "Please send your photograph to:"
+msgstr "Bitte sende dein Foto an:"
+
+msgid "More infomation here."
+msgstr "Mehr Infos hier."
