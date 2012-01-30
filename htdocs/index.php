@@ -26,7 +26,7 @@
 // +----------------------------------------------------+
 
 /**
- * This is the main application fail which sets up the routing for silex
+ * This is the main application which sets up the routing for silex
  *
  * @author Markus Tacker <m@coderbyheart.de>
  */
@@ -47,14 +47,18 @@ Twig_Extensions_Autoloader::register();
 
 $stonesReader = new StonesReader($config['stonesCSVFile']);
 
+
 $app = new Silex\Application();
 
+// Register extra modules
 $app->register(new Silex\Provider\SymfonyBridgesServiceProvider(), array(
     'symfony_bridges.class_path' => __DIR__ . '/../vendor/symfony/src',
 ));
+// .. for sending mails
 $app->register(new Silex\Provider\SwiftmailerServiceProvider(), array(
     'swiftmailer.class_path' => __DIR__ . '/../vendor/swiftmailer/lib/classes',
 ));
+//  .. for the templating engine
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__ . '/../templates',
     'twig.class_path' => __DIR__ . '/../vendor/twig/lib',
@@ -63,11 +67,15 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
         $twig->addExtension(new Twig_Extensions_Extension_I18n());
     })
 ));
+
+// Make $config array globally available
 $app['config'] = $app->share(function () use($app, $config)
 {
     return $config;
 });
 
+// Make sure the right locale is used based on the lang param in url
+// Set some globals in the templating engine
 $app->before(function () use ($app, $config)
 {
     $locale = $config['locales']['en'];
@@ -85,6 +93,7 @@ $app->before(function () use ($app, $config)
     $app['twig']->addGlobal('textonly', $app['request']->get('textonly', false));
 });
 
+// Now for the routes
 $app->get('/', function() use($app)
 {
     return $app->redirect('/en/stones');
@@ -210,4 +219,5 @@ $app->get('/{lang}/news', function($lang) use($app)
     return $app['twig']->render('news.twig', array('navactive' => 'news', 'media' => $media));
 })->assert('lang', '[a-z]{2}');
 
+// Done.
 $app->run();
