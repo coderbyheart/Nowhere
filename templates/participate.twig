@@ -1,6 +1,16 @@
 {% extends "base.twig" %}
 {% block body %}
 <article>
+    <!--
+
+       Webfonts were not an option. That hurts.
+       Technical background: The text rendering technique used
+       is far from perfect and fails when dealing with multiline texts.
+    -->
+    <p>
+        <img src="/assets/rendered/participate-{{ lang }}.png" />
+    </p>
+
     <form method="POST" action="" enctype="multipart/form-data">
         <p>
             <label class="textimage" for="name">{% trans %}Name{% endtrans %}</label>
@@ -68,8 +78,6 @@
 
         #}
 
-        <p><small>{% trans %}Please send your photograph to:{% endtrans %} <a href="mailto:{{ contactmail }}">{{ contactmail }}</a>. <a href="#">{% trans %}More infomation here.{% endtrans %}</a></small></p>
-        
         <p class="right">
             <button type="submit"><span class="textimage textimage-button">{% trans %}submit{% endtrans %}</span>
             </button>

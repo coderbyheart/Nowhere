@@ -1,7 +1,6 @@
 {% extends "base.twig" %}
 {% block body %}
 <article lang="de-de">
-    {% if not textonly %}
     <!--
 
     Webfonts were not an option. That hurts.
@@ -9,66 +8,6 @@
     is far from perfect and fails when dealing with multiline texts.
 
     -->
-    <img src="/assets/rendered/about-{{ lang }}.png" longdesc="?textonly=1" />
-    {% endif %}
-    {% if not textonly %}
-    <div class="hidden">
-        {% endif %}
-        <p>
-            Sehnsucht gehört zu jenen Wörtern im Deutschen, die sich kaum übersetzen lassen. Es ist schon allein
-            schwierig,
-            die Sehnsucht ansich zu beschreiben. Es ist einer jener Begriffe, bei denen es keine befriedigende
-            Entsprechung
-            in einer anderen Sprache gibt. Ein liebendes Verlangen paart sich mit der schmerzlichen Gewissheit, das
-            Ersehnte
-            wohl nie ganz zu erreichen. Man erahnt sogar, dass die Erfüllung eines sehnlichen Wunsches wohl auch die
-            Zerstörung des Ersehnten bedeuten könnte. Der englische Dichter Oscar Wilde beschrieb einmal das Dilemma:
-            »In
-            this world there are only two tragedies: one is not getting what you want, the other is getting it.« Der
-            Begriff
-            Sehnsucht vermag diesen Konflikt in sich selbst darzustellen.
-
-        </p>
-
-        <p>
-            Jeder kennt Fernweh oder die Sehnsucht nach anderen Orten. Manchmal ist es ein realer Ort, manchmal auch nur
-            die
-            vage Vorstellung von »Ganz-woanders-sein-wollen«.
-            Viele haben Freunde auf der ganzen Welt, die man auf verschiedenste Weise kennengelernt hat, bei Reisen,
-            Auslandsaufenthalten oder virtuell, ​mit denen wir analog per Post oder digital über E-Mail, Facebook und
-            Co. in
-            Kontakt stehen können. Und manchmal ist der momentane Aufenthaltsort des Einen das Wunsch-Ziel eines
-            Anderen.
-            Man muss seinen Blick manchmal nur neu ausrichten.
-        </p>
-
-        <p>
-            Im Heute und Jetzt geschieht alles unglaublich schnell. In unserer Zeit kann jeder mit Google-Maps innerhalb
-            von
-            Bruchteilen von Sekunden sehen, wie  eine bestimmte Straße in einem Dorf, in einem Land, auf einem anderen
-            Kontinent aussieht. Vorher wussten wir vielleicht nicht einmal von der Existenz dieses Dorfes, nun ist es
-            uns
-            möglich, diesen Straßenzug virtuell hinabzuschreiten und zu sehen, dass das Gartentor blau gestrichen ist.
-            Aber wie verändert dieses Wissen oder eher die Möglichkeit dies zu wissen, unsere Gefühle gegenüber dem
-            Reisen?
-            Haben all diese Rahmenbedingungen unsere Sicht auf das Reisen und vor allem auf die Sehnsucht in die Ferne
-            verändert? Sind die Gefühle stärker oder schwächer geworden? Und haben wir das Gefühl, die Welt besser zu
-            kennen?
-            Das Projekt »Nowhere« soll im Betrachter die eigenen Sehnsüchte bewusst werden lassen, sie/er soll kann
-            diese
-            spielerisch erfahren können, seinen eigenen Horizont erweitern und ihn neugierig auf die Welt machen.
-        </p>
-
-        <p>
-            Im Projekt »Nowhere« verbinden sich so virtuell und analog »verknüpfte« Menschen zu einer gemeinsamen
-            Ausstellung, zu der sie als Teilnehmer aus aller Welt beitragen.
-            Dazu benötigen wir die »Schlüssel-Objekte«, die Steine, die diese Sehnsüchte und die Gefühle von Fernweh
-            materialisieren konnten, hier auf der Website virtuell die Welt bereisen können und in der realen
-            Ausstellung
-            sogar haptisch erfahrbar machen.
-        </p>
-        {% if not textonly %}
-    </div>
-    {% endif %}
+    <img src="/assets/rendered/about-{{ lang }}.png?2"/>
 </article>
 {% endblock %}
